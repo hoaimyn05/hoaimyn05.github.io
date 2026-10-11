@@ -50,7 +50,7 @@
       <div class="hero-stage">
         <h1 class="hero-name giant" aria-label="Hoai My"><span class="hn hn-1" data-split>HOAI</span><span class="hn hn-2" data-split>MY</span></h1>
         <div class="hero-glow" aria-hidden="true"></div>
-        <div class="cutout-wrap"><img class="cutout cutout-ghost" src="assets/hoai-my-cutout.webp" alt="" aria-hidden="true" /><img class="cutout" src="assets/hoai-my-cutout.webp" width="870" height="1110" alt="Nguyen Hoai My" /></div>
+
       </div>
       <div class="hero-bottom">
         <div class="hero-copy">
@@ -76,6 +76,11 @@
       <p class="index"><b>02</b> About me</p>
       <h2 class="title fx">Curious about AI, <em>obsessed</em> with <mark>shipping.</mark></h2>
       <div class="about-grid">
+        <figure class="about-photo reveal">
+          <img src="assets/hoai-my-about.webp" width="960" height="1280" alt="Nguyen Hoai My at sunset" loading="lazy" />
+          <figcaption>Ho Chi Minh City · golden hour</figcaption>
+        </figure>
+        <div class="about-text">
         <p class="about-lead" data-scroll-lit>I'm Nguyen Hoai My, an AI student at FPT University in Ho Chi Minh City. I work where research meets engineering: reading papers, turning ideas into models, measuring them honestly, and wrapping them in APIs and dashboards people can actually use.</p>
         <dl class="facts reveal">
           <div><dt>Education</dt><dd>FPT University — Information Technology (AI), 2023 – 2027</dd></div>
@@ -83,6 +88,7 @@
           <div><dt>Languages</dt><dd>Vietnamese · English B2 CEFR</dd></div>
           <div><dt>Leadership</dt><dd>Team lead on two class projects</dd></div>
         </dl>
+        </div>
       </div>
     </section>
 
@@ -138,25 +144,65 @@
       <p class="index"><b>04</b> Projects</p>
       <h2 class="title fx">Things I've <mark>built.</mark></h2>
       <ol class="works">
-        <li class="work reveal">
+        <li class="work reveal" tabindex="0">
           <span class="work-metric" data-count="87" data-suffix="%">87%</span>
-          <div><h3>Speech Emotion Recognition</h3><p>CNN on MFCC features, benchmarked against SVM and BiLSTM. <i>Team lead · audio</i></p></div>
+          <div class="work-body">
+            <h3>Speech Emotion Recognition <span class="plus" aria-hidden="true">+</span></h3>
+            <p>CNN on MFCC features, benchmarked against SVM and BiLSTM.</p>
+            <div class="work-more"><div>
+              <p class="work-meta"><b>Sep – Nov 2025</b> · Team lead · team of 4</p>
+              <ul><li>Extracted MFCC features from speech recordings</li><li>Designed and trained a CNN emotion classifier</li><li>Compared against SVM and BiLSTM baselines — the CNN captured emotional patterns best</li></ul>
+              <p class="work-tech"><span>Python</span><span>TensorFlow / Keras</span><span>Librosa · MFCC</span><span>scikit-learn</span></p>
+            </div></div>
+          </div>
         </li>
-        <li class="work reveal">
+        <li class="work reveal" tabindex="0">
           <span class="work-metric" data-count="89.5" data-decimals="1" data-suffix="%">89.5%</span>
-          <div><h3>Real-time comment emotion</h3><p>Six-emotion TF–IDF + Logistic Regression model served through FastAPI. Macro F1 0.86. <i>NLP · API</i></p></div>
+          <div class="work-body">
+            <h3>Real-time comment emotion <span class="plus" aria-hidden="true">+</span></h3>
+            <p>Six-emotion TF–IDF + Logistic Regression model served through FastAPI.</p>
+            <div class="work-more"><div>
+              <p class="work-meta"><b>Sep – Nov 2025</b> · Team of 4</p>
+              <ul><li>Trained on a 6-class Kaggle dataset (joy, sadness, anger…)</li><li>TF–IDF features with Logistic Regression</li><li>Served real-time predictions to a web app through FastAPI — macro F1 0.86</li></ul>
+              <p class="work-tech"><span>Python</span><span>scikit-learn</span><span>FastAPI</span><span>TF–IDF</span></p>
+            </div></div>
+          </div>
         </li>
-        <li class="work reveal">
+        <li class="work reveal" tabindex="0">
           <span class="work-metric" data-count="1.3" data-decimals="1">1.3</span>
-          <div><h3>Stock forecast + AI explainer</h3><p>XGBoost and LSTM in Streamlit with a chatbot that explains each call. Sharpe 1.3, 58% hit rate. <i>Team lead · forecasting</i></p></div>
+          <div class="work-body">
+            <h3>Stock forecast + AI explainer <span class="plus" aria-hidden="true">+</span></h3>
+            <p>XGBoost and LSTM forecasts with a chatbot that explains each call.</p>
+            <div class="work-more"><div>
+              <p class="work-meta"><b>May – Aug 2025</b> · Team lead · team of 3</p>
+              <ul><li>Forecast prices from historical data with XGBoost and LSTM</li><li>Built an interactive Streamlit dashboard</li><li>Integrated an OpenAI-powered chatbot to answer questions and explain predictions — 58% hit rate, Sharpe 1.3</li></ul>
+              <p class="work-tech"><span>Python</span><span>XGBoost</span><span>LSTM</span><span>Streamlit</span><span>OpenAI API</span></p>
+            </div></div>
+          </div>
         </li>
-        <li class="work reveal">
+        <li class="work reveal" tabindex="0">
           <span class="work-metric small">now</span>
-          <div><h3>Flux AI</h3><p>A personal financial coach built on multi-step LLM orchestration. <i>In development · LLM</i></p></div>
+          <div class="work-body">
+            <h3>Flux AI <span class="plus" aria-hidden="true">+</span></h3>
+            <p>A personal financial coach built on multi-step LLM orchestration.</p>
+            <div class="work-more"><div>
+              <p class="work-meta"><b>In development</b> · Personal project</p>
+              <ul><li>Multi-step LLM orchestration turns financial context into explainable guidance</li><li>Backend AI services designed for deployment</li></ul>
+              <p class="work-tech"><span>LLMs</span><span>FastAPI</span><span>Docker</span><span>PostgreSQL</span><span>AWS EC2</span></p>
+            </div></div>
+          </div>
         </li>
-        <li class="work reveal">
+        <li class="work reveal" tabindex="0">
           <span class="work-metric small">cv</span>
-          <div><h3>Secure Face Login</h3><p>Anti-spoofing checks liveness before face recognition matches identity. <i>Computer vision · security</i></p></div>
+          <div class="work-body">
+            <h3>Secure Face Login <span class="plus" aria-hidden="true">+</span></h3>
+            <p>Anti-spoofing checks liveness before face recognition matches identity.</p>
+            <div class="work-more"><div>
+              <p class="work-meta"><b>Built</b> · Computer vision</p>
+              <ul><li>Face Anti-Spoofing verifies a real, live face first</li><li>Face Recognition then matches identity for secure login</li></ul>
+              <p class="work-tech"><span>PyTorch</span><span>OpenCV</span><span>Computer vision</span></p>
+            </div></div>
+          </div>
         </li>
       </ol>
     </section>

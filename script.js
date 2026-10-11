@@ -81,7 +81,7 @@ function splitWords(root) {
   };
   walk(root);
 }
-const WORD_TARGETS = '.index, .lead, .actions .link, .numbers dd, .portrait figcaption, .about-lead, .facts dt, .facts dd, .hint, .work h3, .work p, .paper .venue, .paper h3, .paper p, #research > p .link, .mail, .socials a, .form-title, .field > span';
+const WORD_TARGETS = '.index, .lead, .actions .link, .numbers dd, .portrait figcaption, .about-lead, .facts dt, .facts dd, .hint, .work h3, .work-body > p, .work-meta, .paper .venue, .paper h3, .paper p, #research > p .link, .mail, .socials a, .form-title, .field > span';
 if (!reducedMotion) document.querySelectorAll(WORD_TARGETS).forEach(splitWords);
 
 // Every page animates its text in when it arrives and back out when it leaves
@@ -442,19 +442,15 @@ function sceneTransition() {
 // Pointer interaction: background spotlight, portrait follows and tilts, title letters react
 if (finePointer && !reducedMotion) {
   const spot = document.querySelector('.spotlight');
-  const ghost = document.querySelector('.cutout-ghost');
   const glow = document.querySelector('.hero-glow');
   let px = innerWidth / 2, py = innerHeight / 2;
   addEventListener('pointermove', (e) => {
     px = e.clientX; py = e.clientY;
     spot.style.setProperty('--sx2', `${px}px`);
     spot.style.setProperty('--sy2', `${py}px`);
-    if (cut && scrollY < innerHeight) {
-      const x = px / innerWidth - 0.5;
-      cut.style.setProperty('--mx', `${x * 160}px`);
-      cut.style.setProperty('--ry', `${x * 18}deg`);
-      ghost?.style.setProperty('--gx', `${-x * 40}px`);
-      glow?.style.setProperty('--gx2', `${x * 120}px`);
+    if (scrollY < innerHeight) {
+      glow?.style.setProperty('--gx2', `${(px / innerWidth - 0.5) * 260}px`);
+      glow?.style.setProperty('--gy2', `${(py / innerHeight - 0.5) * 120}px`);
     }
   }, { passive: true });
 
@@ -473,4 +469,31 @@ if (finePointer && !reducedMotion) {
     requestAnimationFrame(near);
   };
   requestAnimationFrame(near);
+}
+
+// Projects: hover (or tap) a row to open its details
+document.querySelectorAll('.work').forEach((row) => {
+  row.addEventListener('click', () => {
+    const open = !row.classList.contains('open');
+    document.querySelectorAll('.work.open').forEach((r) => r.classList.remove('open'));
+    row.classList.toggle('open', open);
+  });
+});
+
+// About photo tilts toward the pointer
+const aboutPhoto = document.querySelector('.about-photo');
+if (aboutPhoto && finePointer && !reducedMotion) {
+  aboutPhoto.addEventListener('pointermove', (e) => {
+    const r = aboutPhoto.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    aboutPhoto.style.setProperty('--tx', `${x * 12}deg`);
+    aboutPhoto.style.setProperty('--ty', `${-y * 12}deg`);
+    aboutPhoto.style.setProperty('--lx', `${(x + 0.5) * 100}%`);
+    aboutPhoto.style.setProperty('--ly', `${(y + 0.5) * 100}%`);
+  });
+  aboutPhoto.addEventListener('pointerleave', () => {
+    aboutPhoto.style.setProperty('--tx', '0deg');
+    aboutPhoto.style.setProperty('--ty', '0deg');
+  });
 }
