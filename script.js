@@ -89,13 +89,7 @@ const pagesForText = [...document.querySelectorAll('.page')];
 pagesForText.forEach((page) => {
   let n = 0;
   page.querySelectorAll('.w > span, .ch').forEach((el) => {
-    // each piece starts somewhere off to the side, above or below
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 60 + Math.random() * 50;
-    el.style.setProperty('--tx', `${Math.round(Math.cos(angle) * dist)}vw`);
-    el.style.setProperty('--ty', `${Math.round(Math.sin(angle) * dist * 0.8)}vh`);
-    el.style.setProperty('--tr', `${Math.round(Math.random() * 160 - 80)}deg`);
-    el.style.setProperty('--d', `${Math.min(n++, 70) * 12}ms`);
+    el.style.setProperty('--d', `${Math.min(n++, 40) * 18}ms`);
   });
 });
 const enterPage = (page) => {
@@ -104,15 +98,11 @@ const enterPage = (page) => {
   page.querySelectorAll('.reveal, .fx, .giant').forEach((el) => el.classList.add('is-visible'));
   page.querySelectorAll('[data-count]').forEach(countUp);
 };
-const leavePage = (page) => {
-  page.classList.remove('shown');
-  page.querySelectorAll('.reveal, .fx, .giant').forEach((el) => el.classList.remove('is-visible'));
-};
 if (reducedMotion || !hasIO) {
   pagesForText.forEach(enterPage);
 } else {
   const textObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => (entry.isIntersecting ? enterPage(entry.target) : leavePage(entry.target)));
+    entries.forEach((entry) => { if (entry.isIntersecting) enterPage(entry.target); });
   }, { threshold: 0.2 });
   pagesForText.forEach((page) => textObserver.observe(page));
 }
