@@ -203,3 +203,50 @@ form?.addEventListener('submit', async (e) => {
     label.textContent = 'Send message';
   }
 });
+
+// Keyboard glides in when the Skills page arrives and back out when it leaves;
+// while visible, a ripple of key presses runs across the board now and then.
+const stage = document.querySelector('.keyboard-stage');
+if (stage) {
+  const board = stage.querySelector('.keyboard');
+  let rippleTimer;
+  const ripple = () => {
+    if (stage.matches(':hover')) return;
+    const order = [...keys].sort((a, b) => {
+      const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+      return (ra.left + ra.top) - (rb.left + rb.top);
+    });
+    order.forEach((key, i) => {
+      setTimeout(() => {
+        key.classList.add('typing');
+        setTimeout(() => key.classList.remove('typing'), 170);
+      }, i * 55);
+    });
+  };
+  if (reducedMotion || !hasIO) {
+    stage.classList.add('in');
+  } else {
+    new IntersectionObserver(([entry]) => {
+      stage.classList.toggle('in', entry.isIntersecting);
+      clearInterval(rippleTimer);
+      if (entry.isIntersecting) {
+        setTimeout(ripple, 1700);
+        rippleTimer = setInterval(ripple, 5200);
+      }
+    }, { threshold: 0.3 }).observe(stage);
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      stage.addEventListener('pointermove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        board.style.setProperty('--rx', `${32 - y * 10}deg`);
+        board.style.setProperty('--rz', `${-7 + x * 8}deg`);
+      });
+      stage.addEventListener('pointerleave', () => {
+        board.style.removeProperty('--rx');
+        board.style.removeProperty('--rz');
+      });
+    }
+  }
+}
