@@ -173,34 +173,30 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 /* Skills: mechanical keyboard */
 .skills-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 1.6rem; align-items: stretch; }
 .keyboard-wrap { display: flex; flex-direction: column; gap: 1.2rem; }
-.keyboard-stage { perspective: 1600px; perspective-origin: 50% 20%; padding: 1rem 0 2rem; }
-/* The board glides in (and back out) as the section enters and leaves the screen */
-.keyboard { --rx: 32deg; --rz: -7deg; position: relative; display: grid; gap: 12px; padding: 24px; border-radius: 26px; background: linear-gradient(160deg, #34343a 0%, #1f1f23 45%, #18181b 100%); box-shadow: inset 0 1.5px 0 rgba(255,255,255,.14), inset 0 -2px 0 rgba(0,0,0,.5), 0 3px 0 #0b0b0c, 0 16px 0 #101012, 0 18px 0 rgba(255,255,255,.04), 0 50px 90px -20px rgba(0,0,0,.95); transform-style: preserve-3d; transform: translateY(160px) rotateX(68deg) rotateZ(-22deg) scale(.82); opacity: 0; transition: transform 1.3s var(--ease), opacity .9s ease; }
-.keyboard::before { content: ""; position: absolute; inset: 12px; border-radius: 18px; background: radial-gradient(70% 90% at 50% 100%, rgba(255,106,31,.32), transparent 70%), #0c0c0e; box-shadow: inset 0 3px 10px rgba(0,0,0,.9); }
-.keyboard-stage.in .keyboard { transform: rotateX(var(--rx)) rotateZ(var(--rz)) scale(.9); opacity: 1; }
-.krow { position: relative; display: flex; gap: 12px; min-width: 0; }
+.keyboard-stage { perspective: 1400px; perspective-origin: 50% 0%; padding: 1.5rem .5rem 2.5rem; }
+/* No case: just keycaps, laid out on a gently tilted plane */
+.keyboard { --rx: 24deg; --rz: -4deg; display: grid; gap: 18px; transform-style: preserve-3d; transform: rotateX(var(--rx)) rotateZ(var(--rz)) scale(.86); transform-origin: 50% 30%; transition: transform .8s var(--ease); }
+.krow { position: relative; display: flex; gap: 18px; min-width: 0; transform-style: preserve-3d; }
 
-/* Sculpted keycaps: tinted sides, a dished top that sits slightly back, legend in the corner */
-.key { --top: #f6f2ea; --top-hi: #ffffff; --top-lo: #e2dacd; --side-a: #dcd3c6; --side-b: #a1968a; --ink: #2a2520; --lift: 10px; position: relative; flex: 1 1 0; min-width: 0; aspect-ratio: 1 / .95; padding: 0; border: 0; border-radius: 13px; background: linear-gradient(180deg, var(--side-a), var(--side-b)); color: var(--ink); font: 600 .66rem Inter, sans-serif; letter-spacing: .02em; display: block; box-shadow: 0 var(--lift) 0 var(--side-b), 0 calc(var(--lift) + 2px) 0 rgba(0,0,0,.35), 0 calc(var(--lift) + 10px) 16px rgba(0,0,0,.55); transform: translateY(calc(var(--lift) * -1)); transition: transform .14s ease-out, box-shadow .14s ease-out, filter .2s; z-index: 0; }
-.key::before { content: ""; position: absolute; inset: 4px 7px 12px; z-index: -1; border-radius: 9px; background: radial-gradient(130% 95% at 50% 18%, var(--top-hi) 0%, var(--top) 55%, var(--top-lo) 100%); box-shadow: inset 0 1.5px 1px rgba(255,255,255,.75), inset 0 -3px 5px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.18); }
-.key img { position: absolute; left: 50%; top: 40%; width: 40%; max-width: 44px; height: auto; aspect-ratio: 1; object-fit: contain; translate: -50% -50%; filter: drop-shadow(0 1px 0 rgba(255,255,255,.4)) drop-shadow(0 1px 1.5px rgba(0,0,0,.18)); transition: transform .3s var(--ease); }
-.key span { position: absolute; left: 14px; bottom: 18px; line-height: 1; text-transform: uppercase; opacity: .78; white-space: nowrap; }
-/* Keys pop up one by one when the board arrives */
-.keyboard .key { opacity: 0; translate: 0 26px; transition: transform .14s ease-out, box-shadow .14s ease-out, filter .2s, opacity .5s ease, translate .7s var(--ease); }
-.keyboard-stage.in .key { opacity: 1; translate: 0 0; transition-delay: 0s, 0s, 0s, calc(.45s + var(--i) * 45ms), calc(.45s + var(--i) * 45ms); }
-.key:hover, .key:focus-visible, .key.pressed, .key.typing { transform: translateY(-2px); box-shadow: 0 2px 0 var(--side-b), 0 3px 0 rgba(0,0,0,.35), 0 4px 10px rgba(0,0,0,.6), 0 0 24px rgba(255,122,31,.45); filter: brightness(1.04); }
-.key:hover img, .key.active img { transform: scale(1.1); }
-.key.active::after { content: ""; position: absolute; left: 50%; bottom: -18px; width: 80%; height: 14px; translate: -50% 0; border-radius: 50%; background: rgba(255,122,31,.8); filter: blur(10px); }
-.key:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.k-dark { --top: #3b3b41; --top-hi: #505058; --top-lo: #2b2b30; --side-a: #2c2c31; --side-b: #121214; --ink: #ece7e0; }
-.k-dark::before { box-shadow: inset 0 1.5px 1px rgba(255,255,255,.16), inset 0 -3px 5px rgba(0,0,0,.3), 0 2px 3px rgba(0,0,0,.3); }
-.k-dark img { filter: drop-shadow(0 0 1px rgba(255,255,255,.4)) drop-shadow(0 2px 3px rgba(0,0,0,.5)); }
-.k-accent { --top: #ff8636; --top-hi: #ffb878; --top-lo: #f0631a; --side-a: #e86418; --side-b: #9a390b; --ink: #2a1003; }
-.k-accent::before { box-shadow: inset 0 1.5px 1px rgba(255,236,214,.7), inset 0 -3px 5px rgba(120,40,0,.2), 0 2px 3px rgba(0,0,0,.2); }
-.key-space { flex: 4.12 1 0; aspect-ratio: auto; }
-.key-space span:last-child { left: 50%; bottom: auto; top: 44%; translate: -50% -50%; font-size: .85rem; letter-spacing: .04em; }
-.space-logos { position: absolute; left: 22px; top: 44%; bottom: auto !important; translate: 0 -50%; display: flex; gap: .35rem; opacity: 1 !important; }
-.space-logos img { position: static; width: 24px; translate: none; }
+/* Tall white keycaps: a dished top face over deep, softly shaded walls */
+.key { --lift: 18px; --glow: #ff7a1f; position: relative; flex: 1 1 0; min-width: 0; aspect-ratio: 1 / 1; padding: 0; border: 0; border-radius: 16px; background: linear-gradient(180deg, #e9e6e1 0%, #c9c4bc 100%); color: #3a3530; font: 600 .64rem Inter, sans-serif; letter-spacing: .06em; display: block; box-shadow: 0 1px 0 #d6d1ca, 0 2px 0 #cfcac2, 0 4px 0 #c8c3bb, 0 6px 0 #c1bcb3, 0 8px 0 #bab4ab, 0 10px 0 #b3ada3, 0 12px 0 #aca59b, 0 14px 0 #a59e93, 0 16px 0 #9e968b, 0 var(--lift) 0 #978f83, 0 calc(var(--lift) + 14px) 24px rgba(0,0,0,.6); transform: translateY(calc(var(--lift) * -1)); transition: transform .16s ease-out, box-shadow .16s ease-out; }
+.key::before { content: ""; position: absolute; inset: 5px 8px 13px; border-radius: 11px; background: radial-gradient(120% 100% at 50% 10%, #ffffff 0%, #f8f6f2 50%, #ebe7e0 100%); box-shadow: inset 0 2px 2px rgba(255,255,255,.95), inset 0 -4px 7px rgba(0,0,0,.07), 0 3px 5px rgba(0,0,0,.12); }
+.key::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -26px; height: 22px; border-radius: 50%; background: var(--glow); filter: blur(16px); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.key img { position: absolute; left: 50%; top: 42%; width: 42%; max-width: 50px; height: auto; aspect-ratio: 1; object-fit: contain; translate: -50% -50%; transition: transform .35s var(--ease); filter: drop-shadow(0 2px 2px rgba(0,0,0,.12)); }
+.key span { position: absolute; left: 50%; bottom: 20px; translate: -50% 0; line-height: 1; text-transform: uppercase; white-space: nowrap; color: #6b645c; }
+.key:hover, .key:focus-visible, .key.pressed, .key.typing { transform: translateY(-4px); box-shadow: 0 1px 0 #d6d1ca, 0 2px 0 #c8c3bb, 0 3px 0 #b3ada3, 0 4px 0 #978f83, 0 10px 18px rgba(0,0,0,.55); }
+.key:hover::after, .key.active::after, .key.typing::after { opacity: .85; }
+.key:hover img, .key.active img { transform: scale(1.12); }
+.key.active::before { box-shadow: inset 0 2px 2px rgba(255,255,255,.95), inset 0 -4px 7px rgba(0,0,0,.07), 0 0 0 2px var(--glow); }
+.key:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.key-space { flex: 4.2 1 0; aspect-ratio: auto; }
+.key-space span:last-child { left: auto; right: 26px; bottom: auto; top: 42%; translate: 0 -50%; font-size: .82rem; color: #3a3530; }
+.key .space-logos { position: absolute; left: 24px; top: 42%; bottom: auto !important; right: auto; translate: 0 -50% !important; display: flex; gap: .4rem; }
+.key .space-logos img { position: static; width: 28px; translate: none; }
+
+/* Each key flies in from somewhere off to the side and lands in place; it flies back out on leave */
+.keyboard .key { opacity: 0; translate: var(--fx, 0) var(--fy, -120px); rotate: var(--fr, 0deg); transition: transform .16s ease-out, box-shadow .16s ease-out, opacity .6s ease, translate .95s cubic-bezier(.2, .9, .25, 1.12), rotate .95s cubic-bezier(.2, .9, .25, 1.12); transition-delay: 0s, 0s, calc(var(--i) * 25ms), calc(var(--i) * 25ms), calc(var(--i) * 25ms); }
+.keyboard-stage.in .key { opacity: 1; translate: 0 0; rotate: 0deg; transition-delay: 0s, 0s, calc(.15s + var(--i) * 55ms), calc(.15s + var(--i) * 55ms), calc(.15s + var(--i) * 55ms); }
 .sound-toggle { align-self: flex-start; display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .9rem; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.03); color: var(--muted); font: 500 .85rem Inter, sans-serif; cursor: pointer; transition: color .3s, border-color .3s; }
 .sound-toggle:hover, .sound-toggle[aria-pressed="true"] { color: var(--text); border-color: rgba(255,154,61,.45); }
 .sound-toggle b { font-weight: 600; color: var(--text); }
@@ -261,19 +257,16 @@ footer { display: flex; justify-content: space-between; align-items: center; gap
   .bento { gap: 12px; }
   .giant { font-size: 25vw; }
   .stat-a, .stat-b, .fact, .work-bento .project:nth-child(n + 2) { grid-column: 1 / -1 !important; }
-  .keyboard-stage { overflow-x: clip; }
-  .krow { gap: 7px; }
-  .keyboard { padding: 12px; gap: 7px; border-radius: 18px; --rx: 24deg; --rz: -4deg; }
-  .key { --lift: 6px; border-radius: 10px; font-size: .56rem; gap: .25rem; }
-  .key::before { border-radius: 8px; }
-  .key-space { font-size: .72rem; }
+  .keyboard-stage { overflow-x: clip; padding-inline: 0; }
+  .keyboard { gap: 10px; --rx: 18deg; --rz: -2deg; }
+  .krow { gap: 10px; }
+  .key { --lift: 11px; border-radius: 11px; box-shadow: 0 2px 0 #cfcac2, 0 4px 0 #c1bcb3, 0 6px 0 #b3ada3, 0 8px 0 #a59e93, 0 var(--lift) 0 #978f83, 0 calc(var(--lift) + 8px) 14px rgba(0,0,0,.55); }
+  .key::before { inset: 3px 5px 9px; border-radius: 8px; }
   .key:not(.key-space) span { width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  .key img { top: 44%; width: 46%; }
-  .key::before { inset: 3px 5px 9px; }
-  .key-space span:last-child { font-size: .62rem; }
-  .space-logos { left: 12px; }
-  .keyboard { padding: 14px; }
-  .space-logos img { width: 18px; }
+  .key img { top: 44%; width: 48%; }
+  .key-space span:last-child { font-size: .64rem; right: 14px; }
+  .key .space-logos { left: 12px; }
+  .key .space-logos img { width: 18px; }
   .stat { justify-content: space-between; }
   .wave { display: none; }
   footer { flex-direction: column; align-items: flex-start; }
