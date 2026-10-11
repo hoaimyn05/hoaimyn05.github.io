@@ -46,3 +46,30 @@ if (!reducedMotion && hasIO) {
   }, { threshold: 0.6 });
   counters.forEach((el) => countObserver.observe(el));
 }
+
+// Audio bars in the featured project tile
+document.querySelectorAll('.wave').forEach((wave) => {
+  for (let i = 0; i < 28; i++) {
+    const bar = document.createElement('i');
+    bar.style.setProperty('--h', `${25 + Math.abs(Math.sin(i * 0.7)) * 75}%`);
+    bar.style.setProperty('--d', `${-(i % 7) * 0.2}s`);
+    wave.append(bar);
+  }
+});
+
+// Warm spotlight that follows the pointer inside each tile
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.tile').forEach((tile) => {
+    tile.addEventListener('pointermove', (e) => {
+      const r = tile.getBoundingClientRect();
+      tile.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      tile.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+}
+
+// Frosted header once the page scrolls
+const header = document.querySelector('.site-header');
+const onScroll = () => header.classList.toggle('scrolled', scrollY > 20);
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
