@@ -12,7 +12,7 @@
   let w = 0, h = 0, dpr = 1;
   let mouse = { x: -100, y: -100, px: -100, py: -100, active: false, last: 0 };
   let hot = false, frame = 0, running = false;
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.home');
   let heroVisible = true;
 
   function sprite(size, stops) {
@@ -71,7 +71,7 @@
   }
 
   function emitAmbient() {
-    if (!heroVisible || frame % 24) return;
+    if (!hero || !heroVisible || frame % 24) return;
     const r = hero.getBoundingClientRect();
     spawn('ember', rand(r.left, r.right), Math.min(r.bottom, h) - rand(0, 40), rand(-0.3, 0.3), rand(-1.4, -0.6));
   }
