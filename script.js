@@ -370,7 +370,7 @@ if (lit) {
 
 // Scroll-driven effects: hero parallax, marquee velocity, lit words
 const nameParts = document.querySelectorAll('.hero-stage .hn-1, .hero-stage .hn-2');
-const cut = document.querySelector('.cutout');
+const cut = document.querySelector('.cutout-wrap');
 const bandTrack = document.querySelector('.band-track');
 let lastY = scrollY, bandX = 0, velocity = 0;
 const loop = () => {
@@ -383,8 +383,9 @@ const loop = () => {
       el.style.setProperty('--px', `${(el.classList.contains('hn-1') ? -1 : 1) * k * 18}vw`);
     });
     if (cut) {
-      cut.style.setProperty('--cy', `${k * 10}%`);
-      cut.style.setProperty('--cs', `${1 + k * 0.08}`);
+      cut.style.setProperty('--cy', `${k * 8}%`);
+      cut.style.setProperty('--sx', `${k * 22}vw`);
+      cut.style.setProperty('--rz2', `${k * 6}deg`);
     }
     if (bandTrack) {
       bandX -= 0.6 + Math.abs(velocity) * 0.25;
@@ -402,6 +403,7 @@ const loop = () => {
       w.classList.toggle('hot', w.classList.contains('hot-word') && i < on);
     });
   }
+  if (!reducedMotion) sceneTransition();
   requestAnimationFrame(loop);
 };
 requestAnimationFrame(loop);
@@ -415,4 +417,60 @@ if (finePointer && !reducedMotion) {
     });
     el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   });
+}
+
+
+// Scroll scene transition: each page opens from a rounded window as it arrives,
+// then sinks back and dims as the next one scrolls over it
+const scenePages = [...document.querySelectorAll('.page')];
+function sceneTransition() {
+  const vh = innerHeight;
+  scenePages.forEach((page) => {
+    const r = page.getBoundingClientRect();
+    const enter = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.7)));
+    const out = Math.max(0, Math.min(1, (vh * 0.6 - r.bottom) / (vh * 0.6)));
+    page.classList.add('tx');
+    const inv = 1 - enter;
+    page.style.setProperty('--in-x', `${inv * 8}%`);
+    page.style.setProperty('--in-y', `${inv * 6}%`);
+    page.style.setProperty('--in-r', `${inv * 60}px`);
+    page.style.setProperty('--out-s', `${1 - out * 0.08}`);
+    page.style.setProperty('--out-o', `${1 - out * 0.7}`);
+  });
+}
+
+// Pointer interaction: background spotlight, portrait follows and tilts, title letters react
+if (finePointer && !reducedMotion) {
+  const spot = document.querySelector('.spotlight');
+  const ghost = document.querySelector('.cutout-ghost');
+  const glow = document.querySelector('.hero-glow');
+  let px = innerWidth / 2, py = innerHeight / 2;
+  addEventListener('pointermove', (e) => {
+    px = e.clientX; py = e.clientY;
+    spot.style.setProperty('--sx2', `${px}px`);
+    spot.style.setProperty('--sy2', `${py}px`);
+    if (cut && scrollY < innerHeight) {
+      const x = px / innerWidth - 0.5;
+      cut.style.setProperty('--mx', `${x * 160}px`);
+      cut.style.setProperty('--ry', `${x * 18}deg`);
+      ghost?.style.setProperty('--gx', `${-x * 40}px`);
+      glow?.style.setProperty('--gx2', `${x * 120}px`);
+    }
+  }, { passive: true });
+
+  const letters = () => [...document.querySelectorAll('.page.shown .title .ch, .page.shown .giant .ch')];
+  let pool = letters();
+  setInterval(() => { pool = letters(); }, 1500);
+  const near = () => {
+    pool.forEach((ch) => {
+      const r = ch.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const d = Math.hypot(r.left + r.width / 2 - px, r.top + r.height / 2 - py);
+      const k = Math.max(0, 1 - d / 140);
+      ch.classList.toggle('near', k > 0.35);
+      ch.style.transform = k > 0 ? `translateY(${-k * 0.18}em) scale(${1 + k * 0.25})` : '';
+    });
+    requestAnimationFrame(near);
+  };
+  requestAnimationFrame(near);
 }
