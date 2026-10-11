@@ -258,3 +258,40 @@ if (stage) {
     }
   }
 }
+
+// Break headline text into letters that drop in and hop on hover
+function splitLetters(root) {
+  let n = 0;
+  const walk = (node) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(part); return; }
+          const word = document.createElement('span');
+          word.style.whiteSpace = 'nowrap';
+          [...part].forEach((letter) => {
+            const ch = document.createElement('span');
+            ch.className = 'ch';
+            ch.setAttribute('aria-hidden', 'true');
+            ch.textContent = letter;
+            ch.style.setProperty('--d', `${n * 22}ms`);
+            ch.style.setProperty('--r', `${Math.round(Math.random() * 20 - 10)}deg`);
+            ch.style.setProperty('--r0', `${Math.round(Math.random() * 30 - 15)}deg`);
+            word.append(ch);
+            n++;
+          });
+          frag.append(word);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('grad-text') && child.tagName !== 'svg' && !child.classList.contains('giant-dot')) {
+        walk(child);
+      }
+    });
+  };
+  if (!root.getAttribute('aria-label')) root.setAttribute('aria-label', root.textContent.replace(/\s+/g, ' ').trim());
+  walk(root);
+}
+document.querySelectorAll('.fx').forEach(splitLetters);
+document.querySelectorAll('[data-split]').forEach((el) => splitLetters(el));
