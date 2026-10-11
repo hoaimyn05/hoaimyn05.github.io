@@ -71,7 +71,7 @@
   }
 
   function emitAmbient() {
-    if (!heroVisible || frame % 7) return;
+    if (!heroVisible || frame % 24) return;
     const r = hero.getBoundingClientRect();
     spawn('ember', rand(r.left, r.right), Math.min(r.bottom, h) - rand(0, 40), rand(-0.3, 0.3), rand(-1.4, -0.6));
   }
