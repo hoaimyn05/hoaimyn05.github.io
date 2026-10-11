@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Nguyen Hoai My — FPT University AI undergraduate building practical computer vision, LLM, and backend AI systems." />
-  <meta name="theme-color" content="#090b14" />
+  <meta name="description" content="Nguyen Hoai My — FPT University AI undergraduate building practical computer vision, LLM, and backend AI systems. Published at AJCAI 2025 and ICIIT 2026." />
+  <meta name="theme-color" content="#07080f" />
   <meta property="og:title" content="Nguyen Hoai My · Artificial Intelligence" />
   <meta property="og:description" content="Computer Vision · LLM Applications · Backend AI Systems" />
   <meta property="og:image" content="assets/social-preview.png" />
@@ -12,156 +12,196 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Silkscreen&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="pixel-avatar.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em></em></span></div>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Nguyen Hoai My, home">
+    <a class="brand" href="#top" aria-label="Nguyen Hoai My, home" data-cursor="home">
       <span class="brand-mark" aria-hidden="true">HM</span>
       <span>hoaimyn05</span>
     </a>
     <nav aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#focus">Focus</a>
-      <a href="#research">Research</a>
-      <a href="#work">Work</a>
-      <a class="nav-cta" href="https://github.com/hoaimyn05">GitHub</a>
+      <a class="roll" href="#about"><span data-text="About">About</span></a>
+      <a class="roll" href="#research"><span data-text="Research">Research</span></a>
+      <a class="roll" href="#projects"><span data-text="Projects">Projects</span></a>
+      <a class="roll" href="#skills"><span data-text="Skills">Skills</span></a>
+      <a class="nav-cta magnetic" href="#contact"><span>Let's talk</span></a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> AI Engineer & Researcher</p>
-        <h1>Turning intelligent models into <em>reliable products.</em></h1>
-        <p class="hero-lede">I'm Nguyen Hoai My, an Artificial Intelligence undergraduate at FPT University working across Computer Vision, LLM workflows, backend AI services, and deployment.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="https://github.com/hoaimyn05">View GitHub</a>
+      <h1 class="hero-name" aria-label="Hoai My">
+        <span class="hero-name-line" data-depth="14">HOAI</span>
+        <span class="hero-name-line outline" data-depth="-14">MY</span>
+      </h1>
+
+      <div class="hero-stage">
+        <div class="avatar-wrap" data-cursor="say hi">
+          <canvas id="pixel-avatar" role="img" aria-label="Pixel art portrait of Hoai My"></canvas>
+          <p class="bubble" aria-hidden="true">Xin chào! 👋</p>
+          <div class="avatar-base" aria-hidden="true"></div>
         </div>
       </div>
-      <div class="hero-visual reveal" aria-label="Abstract neural network visualization">
-        <div class="terminal-card">
-          <div class="terminal-top"><span></span><span></span><span></span><small>direction.py</small></div>
-          <pre><code><b>my</b> = {
-  <i>"role"</i>: <q>"AI Engineer & Researcher"</q>,
-  <i>"stack"</i>: <q>"PyTorch → FastAPI → Docker"</q>,
-  <i>"goal"</i>: <q>"research → reliable product"</q>
-}</code></pre>
-          <div class="signal"><span></span><span></span><span></span><span></span><span></span></div>
-        </div>
+
+      <div class="hero-side hero-left reveal">
+        <p class="pixel-label"><span class="live-dot"></span> Open to AI internships</p>
+        <p class="hero-role">AI Engineer<br />&amp; Researcher</p>
+        <p class="hero-lede">Artificial Intelligence undergraduate at FPT University, turning research experiments into reliable AI products.</p>
+      </div>
+
+      <div class="hero-side hero-right reveal">
+        <ul class="hero-facts">
+          <li><b>02</b><span>Papers published<br />AJCAI 2025 · ICIIT 2026</span></li>
+          <li><b>05+</b><span>AI systems built<br />CV · NLP · LLM · Audio</span></li>
+          <li><b>HCMC</b><span>Ho Chi Minh City<br />Vietnam</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-bottom">
+        <a class="button button-primary magnetic" href="#projects"><span>Explore my work →</span></a>
+        <a class="button button-ghost magnetic" href="https://github.com/hoaimyn05"><span>GitHub ↗</span></a>
+        <a class="scroll-hint" href="#about" aria-label="Scroll to About"><span></span></a>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Focus areas">
+      <div class="marquee-track">
+        <span>Computer Vision</span><i>✦</i><span>Large Language Models</span><i>✦</i><span>Speech &amp; Audio AI</span><i>✦</i><span>Explainable AI</span><i>✦</i><span>MLOps &amp; Deployment</span><i>✦</i>
+        <span aria-hidden="true">Computer Vision</span><i>✦</i><span aria-hidden="true">Large Language Models</span><i>✦</i><span aria-hidden="true">Speech &amp; Audio AI</span><i>✦</i><span aria-hidden="true">Explainable AI</span><i>✦</i><span aria-hidden="true">MLOps &amp; Deployment</span><i>✦</i>
       </div>
     </section>
 
     <section class="section" id="about">
       <p class="section-index">01 / About</p>
-      <div class="section-grid">
-        <h2>Research depth with a product mindset.</h2>
-        <div class="body-copy">
-          <p>I build practical AI systems from research experiments to deployable products. My current work spans computer vision, multi-step LLM orchestration, API services, and cloud deployment.</p>
-          <p>I care about strong evaluation, secure system boundaries, and turning model output into experiences people can actually use.</p>
+      <div class="about-grid">
+        <h2 class="split reveal">Research depth with a <em>product mindset.</em></h2>
+        <div class="body-copy reveal">
+          <p>I'm Nguyen Hoai My, an AI student at FPT University (2023 – 2027). I build practical systems across computer vision, multi-step LLM orchestration, speech emotion recognition, and backend AI services.</p>
+          <p>I care about honest evaluation, secure system boundaries, and turning model output into experiences people can actually use.</p>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="focus">
-      <p class="section-index">02 / Focus</p>
-      <div class="card-grid">
-        <article class="focus-card reveal">
-          <span class="card-number">01</span>
-          <h3>Computer Vision</h3>
-          <p>Face Anti-Spoofing, Face Recognition, and secure vision-powered identity flows.</p>
-          <div class="card-line"></div>
-        </article>
-        <article class="focus-card reveal">
-          <span class="card-number">02</span>
-          <h3>LLM Applications</h3>
-          <p>Multi-step orchestration, agentic workflows, and context-aware AI experiences.</p>
-          <div class="card-line"></div>
-        </article>
-        <article class="focus-card reveal">
-          <span class="card-number">03</span>
-          <h3>Backend AI Systems</h3>
-          <p>FastAPI, Docker, PostgreSQL, and AWS EC2 for reliable AI deployment.</p>
-          <div class="card-line"></div>
-        </article>
+      <div class="stats">
+        <article class="stat tilt reveal"><b data-count="2">0</b><span>Peer-reviewed papers</span></article>
+        <article class="stat tilt reveal"><b data-count="89.5" data-decimals="1" data-suffix="%">0</b><span>Emotion text accuracy</span></article>
+        <article class="stat tilt reveal"><b data-count="87" data-suffix="%">0</b><span>Speech emotion accuracy</span></article>
+        <article class="stat tilt reveal"><b data-count="1.3" data-decimals="1">0</b><span>Sharpe ratio · stock model</span></article>
       </div>
     </section>
 
     <section class="section" id="research">
-      <p class="section-index">03 / Research & signals</p>
-      <div class="research-list">
-        <article class="research-item reveal">
-          <div class="research-meta">
-            <a href="https://link.springer.com/chapter/10.1007/978-981-95-4969-6_33">Springer LNAI · Volume 16370 <span aria-hidden="true">↗</span></a>
-            <span>Published · AI 2025 · Scopus Q2</span>
+      <p class="section-index">02 / Research &amp; publications</p>
+      <div class="research-grid">
+        <a class="paper tilt reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33" data-cursor="read">
+          <span class="spot" aria-hidden="true"></span>
+          <div class="paper-top"><span class="pill pill-green">Published</span><span class="pill">AJCAI 2025 · CORE B</span><span class="pill">Springer LNAI 16370</span></div>
+          <h3>Four Seasons in One Day: Multimodal Weather Forecasting &amp; Shelter Suggestion for Sydney, Melbourne and Canberra</h3>
+          <p>A multimodal forecasting system combining meteorological data, satellite imagery and social signals with real-time shelter recommendations. First &amp; corresponding author. Presented in Canberra, Australia.</p>
+          <div class="paper-foot"><span>DOI 10.1007/978-981-95-4969-6_33</span><span class="arrow">↗</span></div>
+        </a>
+        <a class="paper tilt reveal" href="https://dl.acm.org/doi/abs/10.1145/3805862.3805923" data-cursor="read">
+          <span class="spot" aria-hidden="true"></span>
+          <div class="paper-top"><span class="pill pill-green">Published</span><span class="pill">ICIIT 2026 · ACM</span><span class="pill">pp. 397–402</span></div>
+          <h3>Insect Detection for Agricultural Pest Removal Using YOLO</h3>
+          <p>A real-time YOLO-based insect identification system for agriculture — detecting, categorising and assessing pest populations to enable precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo. Presented in Da Nang, Vietnam.</p>
+          <div class="paper-foot"><span>DOI 10.1145/3805862.3805923</span><span class="arrow">↗</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <p class="section-index">03 / Selected projects</p>
+      <ol class="project-list">
+        <li class="project reveal">
+          <span class="project-no">01</span>
+          <div class="project-main">
+            <h3>Flux AI</h3>
+            <p>An AI personal financial coach powered by multi-step LLM orchestration, turning financial context into useful, explainable guidance.</p>
           </div>
-          <h2><a href="https://link.springer.com/chapter/10.1007/978-981-95-4969-6_33">Weather Forecasting System “Four Seasons in One Day” and Shelter Suggestion for Sydney and Melbourne and Canberra.</a></h2>
-          <p>First and corresponding author · Multimodal forecasting, explainable AI, and real-time shelter recommendations.</p>
-        </article>
-        <article class="research-item reveal">
-          <div class="research-meta">
-            <a href="http://www.jait.us/">Journal of Advances in Information Technology <span aria-hidden="true">↗</span></a>
-            <span>Accepted · EI Compendex · ESCI · Scopus</span>
+          <span class="project-tags">LLM · FinTech · <em>In development</em></span>
+        </li>
+        <li class="project reveal">
+          <span class="project-no">02</span>
+          <div class="project-main">
+            <h3>Secure Face Login</h3>
+            <p>Face Anti-Spoofing combined with Face Recognition to verify liveness before identity matching.</p>
           </div>
-          <h2>Insect Detection for Agricultural Pest Removal Using YOLO.</h2>
-          <p>Computer vision research for agricultural pest detection and removal.</p>
-        </article>
-      </div>
+          <span class="project-tags">Computer Vision · Security</span>
+        </li>
+        <li class="project reveal">
+          <span class="project-no">03</span>
+          <div class="project-main">
+            <h3>Stock Prediction + AI Chatbot</h3>
+            <p>Led a team of 3 to forecast prices with XGBoost and LSTM, served through an interactive Streamlit dashboard and an OpenAI-powered chatbot that explains predictions. 58% hit rate · 1.3 Sharpe ratio.</p>
+          </div>
+          <span class="project-tags">XGBoost · LSTM · Streamlit</span>
+        </li>
+        <li class="project reveal">
+          <span class="project-no">04</span>
+          <div class="project-main">
+            <h3>Speech Emotion Recognition</h3>
+            <p>Led a team of 4 to build a CNN on MFCC features, benchmarked against SVM and BiLSTM baselines. 87% accuracy.</p>
+          </div>
+          <span class="project-tags">CNN · MFCC · Audio</span>
+        </li>
+        <li class="project reveal">
+          <span class="project-no">05</span>
+          <div class="project-main">
+            <h3>Real-Time Comment Emotion Analysis</h3>
+            <p>A web app classifying 6 emotions with TF–IDF + Logistic Regression, served in real time through FastAPI. 89.5% accuracy · macro F1 0.86.</p>
+          </div>
+          <span class="project-tags">NLP · FastAPI</span>
+        </li>
+      </ol>
     </section>
 
-    <section class="stack-universe" aria-label="AI technology universe">
-      <div class="stack-title">
-        <p class="section-index">AI-Tech Universe</p>
-        <span>Research · Engineer · Deploy</span>
-      </div>
-      <div class="stack-row">
-        <span>Python</span><span>PyTorch</span><span>OpenCV</span><span>scikit-learn</span><span>LLM Applications</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>AWS EC2</span>
-      </div>
-    </section>
-
-    <section class="section" id="work">
-      <p class="section-index">04 / Selected work</p>
-      <div class="projects-grid">
-      <article class="work-panel reveal">
-        <div>
-          <span class="status"><span></span> In development</span>
-          <h2>Flux AI</h2>
-          <p>An AI personal financial coach powered by multi-step LLM orchestration, built to turn financial context into useful, explainable guidance.</p>
+    <section class="section" id="skills">
+      <p class="section-index">04 / Toolkit</p>
+      <div class="skills-grid">
+        <div class="skill-group tilt reveal">
+          <span class="spot" aria-hidden="true"></span>
+          <h3>Languages</h3>
+          <ul><li>Python</li><li>SQL</li></ul>
         </div>
-        <span class="project-tags">LLM orchestration · Backend AI · FinTech</span>
-      </article>
-      <article class="work-panel reveal">
-        <div>
-          <span class="status"><span></span> Built</span>
-          <h2>Secure Face Login</h2>
-          <p>A secure login pipeline combining Face Anti-Spoofing with Face Recognition to verify liveness before identity matching.</p>
+        <div class="skill-group tilt reveal">
+          <span class="spot" aria-hidden="true"></span>
+          <h3>ML &amp; Deep Learning</h3>
+          <ul><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>YOLO</li></ul>
         </div>
-        <span class="project-tags">Computer Vision · Security · PyTorch</span>
-      </article>
+        <div class="skill-group tilt reveal">
+          <span class="spot" aria-hidden="true"></span>
+          <h3>Ship &amp; Serve</h3>
+          <ul><li>FastAPI</li><li>Streamlit</li><li>Docker</li><li>PostgreSQL</li><li>AWS EC2</li><li>Git</li></ul>
+        </div>
+        <div class="skill-group tilt reveal">
+          <span class="spot" aria-hidden="true"></span>
+          <h3>Languages spoken</h3>
+          <ul><li>Vietnamese</li><li>English B2 CEFR</li></ul>
+        </div>
       </div>
     </section>
 
-    <section class="section closing">
-      <p class="section-index">05 / Connect</p>
-      <h2>Let's learn and build something meaningful.</h2>
-      <p>Open to AI research, engineering internships, student collaborations, and conversations about taking intelligent systems from prototype to production.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="https://github.com/hoaimyn05">Connect on GitHub</a>
-        <!-- Replace with your real LinkedIn URL before publishing. -->
-      </div>
+    <section class="section contact" id="contact">
+      <p class="section-index">05 / Contact</p>
+      <h2 class="contact-title">Let's build something <em>meaningful.</em></h2>
+      <p>Open to AI research, engineering internships, and student collaborations.</p>
+      <a class="contact-orb magnetic" href="https://github.com/hoaimyn05" data-cursor="go"><span>Say hello<br />on GitHub</span></a>
     </section>
   </main>
 
   <footer>
     <span>© <span id="year"></span> Nguyen Hoai My</span>
-    <span>Designed with clarity. Built for growth.</span>
+    <img class="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=hoaimyn05.github.io&amp;left_text=visitors&amp;left_color=%2311152a&amp;right_color=%237c3aed" alt="Visitor count" loading="lazy" />
+    <span class="pixel-label">Made pixel by pixel</span>
   </footer>
 </body>
 </html>
