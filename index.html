@@ -13,7 +13,7 @@
   <link rel="preload" as="image" href="assets/hoai-my.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="fire-cursor.js"></script>
   <script defer src="script.js"></script>
@@ -21,125 +21,148 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <canvas id="fire" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
   <header class="site-header">
-    <a class="brand" href="#top">Hoai My</a>
-    <nav aria-label="Primary navigation">
-      <a class="u" href="#work">Work</a>
-      <a class="u" href="#research">Research</a>
-      <a class="u" href="#about">About</a>
-      <a class="u" href="#contact">Contact</a>
+    <a class="brand" href="#top"><span class="brand-dot"></span>Hoai My</a>
+    <nav class="pill-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
     </nav>
+    <a class="btn btn-light btn-sm" href="#contact">Contact</a>
   </header>
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-text">
-        <p class="status reveal"><span class="dot"></span>Open to AI internships · Ho Chi Minh City</p>
-        <h1 class="reveal">AI engineer turning research into products <em>people use.</em></h1>
-        <p class="lede reveal">I'm Nguyen Hoai My, an AI student at FPT University working on computer vision, speech and LLM systems — with two peer-reviewed papers along the way.</p>
-        <div class="actions reveal">
-          <a class="btn btn-primary" href="#work">See my work</a>
-          <a class="btn btn-ghost" href="mailto:hoaimyn05@gmail.com">Get in touch</a>
-        </div>
+      <h1 class="giant" aria-label="Hoai My">
+        <span class="giant-line">Hoai</span><span class="giant-line grad">My<span class="giant-dot">.</span></span>
+      </h1>
+
+      <div class="bento hero-bento">
+        <article class="tile intro reveal">
+          <p class="status"><span class="dot"></span>Open to AI internships</p>
+          <p class="intro-text">AI engineer &amp; researcher turning research into <em class="grad-text">products people use.</em></p>
+          <div class="actions">
+            <a class="btn btn-grad" href="#work">See my work <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Google Scholar</a>
+          </div>
+        </article>
+
+        <figure class="tile photo reveal">
+          <img src="assets/hoai-my.jpg" width="960" height="1280" alt="Nguyen Hoai My standing in front of a sunset" />
+          <figcaption><span>📍 Ho Chi Minh City</span><span>FPT University · AI</span></figcaption>
+        </figure>
+
+        <article class="tile stat stat-a reveal">
+          <b class="grad-text" data-count="2">2</b>
+          <span>peer-reviewed papers<br /><small>AJCAI 2025 · ICIIT 2026</small></span>
+        </article>
+        <article class="tile stat stat-b reveal">
+          <b class="grad-text" data-count="89.5" data-decimals="1" data-suffix="%">89.5%</b>
+          <span>best model accuracy<br /><small>real-time emotion API</small></span>
+        </article>
       </div>
-      <figure class="portrait reveal">
-        <img src="assets/hoai-my.jpg" width="960" height="1280" alt="Nguyen Hoai My standing in front of a sunset" />
-      </figure>
     </section>
 
-    <section class="numbers" aria-label="Highlights">
-      <div class="reveal"><b data-count="2">2</b><span>Published papers</span></div>
-      <div class="reveal"><b data-count="89.5" data-decimals="1" data-suffix="%">89.5%</b><span>Best model accuracy</span></div>
-      <div class="reveal"><b data-count="5" data-suffix="+">5+</b><span>AI systems built</span></div>
-      <div class="reveal"><b>2027</b><span>Graduating, FPT University</span></div>
+    <section class="band" aria-label="Focus areas">
+      <div class="band-track">
+        <span>Computer Vision</span><i>✦</i><span>Speech AI</span><i>✦</i><span>LLM Applications</span><i>✦</i><span>Explainable AI</span><i>✦</i><span>Deployment</span><i>✦</i>
+        <span aria-hidden="true">Computer Vision</span><i>✦</i><span aria-hidden="true">Speech AI</span><i>✦</i><span aria-hidden="true">LLM Applications</span><i>✦</i><span aria-hidden="true">Explainable AI</span><i>✦</i><span aria-hidden="true">Deployment</span><i>✦</i>
+      </div>
     </section>
 
     <section class="section" id="work">
-      <div class="section-head reveal">
-        <h2>Selected work</h2>
-        <p>Projects across vision, speech, language and forecasting.</p>
+      <header class="section-head reveal">
+        <p class="eyebrow">Selected work</p>
+        <h2>Things I've <em class="grad-text">built.</em></h2>
+      </header>
+      <div class="bento work-bento">
+        <article class="tile project featured glow reveal">
+          <div class="tags"><span>Audio</span><span>CNN</span><span>Team lead</span></div>
+          <h3>Speech Emotion Recognition</h3>
+          <p>Hearing emotion in the voice: a CNN on MFCC features, benchmarked against SVM and BiLSTM baselines.</p>
+          <div class="metric"><b data-count="87" data-suffix="%">87%</b><span>accuracy</span></div>
+          <div class="wave" aria-hidden="true"></div>
+        </article>
+        <article class="tile project glow reveal">
+          <div class="tags"><span>NLP</span><span>FastAPI</span></div>
+          <h3>Real-time comment emotion</h3>
+          <p>Six-emotion classifier with TF–IDF and Logistic Regression, served live through an API.</p>
+          <div class="metric"><b data-count="89.5" data-decimals="1" data-suffix="%">89.5%</b><span>accuracy · F1 0.86</span></div>
+        </article>
+        <article class="tile project glow reveal">
+          <div class="tags"><span>Forecasting</span><span>LLM</span><span>Team lead</span></div>
+          <h3>Stock forecast + AI explainer</h3>
+          <p>XGBoost and LSTM forecasts in Streamlit, with a chatbot that explains every call.</p>
+          <div class="metric"><b data-count="1.3" data-decimals="1">1.3</b><span>Sharpe · 58% hit rate</span></div>
+        </article>
+        <article class="tile project glow reveal">
+          <div class="tags"><span>LLM</span><span>FinTech</span></div>
+          <h3>Flux AI</h3>
+          <p>A personal financial coach built on multi-step LLM orchestration.</p>
+          <div class="metric"><span class="live"><span class="dot"></span>In development</span></div>
+        </article>
+        <article class="tile project glow reveal">
+          <div class="tags"><span>Vision</span><span>Security</span></div>
+          <h3>Secure Face Login</h3>
+          <p>Anti-spoofing checks liveness before face recognition matches identity.</p>
+          <div class="metric"><span class="live">Liveness → identity</span></div>
+        </article>
       </div>
-      <ol class="list">
-        <li class="row reveal">
-          <span class="row-year">2025</span>
-          <div class="row-main"><h3>Speech Emotion Recognition</h3><p>CNN on MFCC features, benchmarked against SVM and BiLSTM. Team lead.</p></div>
-          <span class="row-meta"><b>87%</b> accuracy</span>
-        </li>
-        <li class="row reveal">
-          <span class="row-year">2025</span>
-          <div class="row-main"><h3>Real-time comment emotion</h3><p>Six-emotion classifier with TF–IDF and Logistic Regression, served through FastAPI.</p></div>
-          <span class="row-meta"><b>89.5%</b> accuracy</span>
-        </li>
-        <li class="row reveal">
-          <span class="row-year">2025</span>
-          <div class="row-main"><h3>Stock forecasting with an AI explainer</h3><p>XGBoost and LSTM in a Streamlit dashboard, with a chatbot that explains each prediction. Team lead.</p></div>
-          <span class="row-meta"><b>1.3</b> Sharpe ratio</span>
-        </li>
-        <li class="row reveal">
-          <span class="row-year">Now</span>
-          <div class="row-main"><h3>Flux AI</h3><p>A personal financial coach built on multi-step LLM orchestration.</p></div>
-          <span class="row-meta">In progress</span>
-        </li>
-        <li class="row reveal">
-          <span class="row-year">Built</span>
-          <div class="row-main"><h3>Secure Face Login</h3><p>Face anti-spoofing checks liveness before face recognition matches identity.</p></div>
-          <span class="row-meta">Computer vision</span>
-        </li>
-      </ol>
     </section>
 
     <section class="section" id="research">
-      <div class="section-head reveal">
-        <h2>Research</h2>
-        <p>Peer-reviewed and published.</p>
-      </div>
-      <ol class="list">
-        <li class="row reveal">
-          <span class="row-year">2026</span>
-          <div class="row-main">
-            <h3><a class="u" href="https://doi.org/10.1145/3805862.3805923">Insect Detection for Agricultural Pest Removal Using YOLO <span aria-hidden="true">↗</span></a></h3>
-            <p>Real-time detection of insect populations for more precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo.</p>
-          </div>
-          <span class="row-meta">ICIIT 2026 · ACM</span>
-        </li>
-        <li class="row reveal">
-          <span class="row-year">2025</span>
-          <div class="row-main">
-            <h3><a class="u" href="https://doi.org/10.1007/978-981-95-4969-6_33">Four Seasons in One Day: Weather Forecasting &amp; Shelter Suggestion <span aria-hidden="true">↗</span></a></h3>
-            <p>Multimodal forecasting from weather data, satellite imagery and social signals for Sydney, Melbourne and Canberra. First author.</p>
-          </div>
-          <span class="row-meta">AJCAI 2025 · Springer</span>
-        </li>
-      </ol>
-      <p class="more reveal"><a class="u" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">All publications on Google Scholar ↗</a></p>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="section-head reveal">
-        <h2>About</h2>
-      </div>
-      <div class="about-grid">
-        <p class="about-text reveal">I like the part of AI where an idea from a paper becomes something that runs reliably for real people. I study at FPT University, read a lot of research, and spend most of my time building, measuring and shipping models.</p>
-        <dl class="facts reveal">
-          <div><dt>Focus</dt><dd>Computer vision, speech, LLM applications</dd></div>
-          <div><dt>Tools</dt><dd>Python, PyTorch, TensorFlow, scikit-learn, OpenCV, YOLO</dd></div>
-          <div><dt>Shipping</dt><dd>FastAPI, Streamlit, Docker, PostgreSQL, AWS</dd></div>
-          <div><dt>Languages</dt><dd>Vietnamese, English (B2)</dd></div>
-        </dl>
+      <header class="section-head reveal">
+        <p class="eyebrow">Research</p>
+        <h2>Published <em class="grad-text">papers.</em></h2>
+      </header>
+      <div class="bento research-bento">
+        <a class="tile paper glow reveal" href="https://doi.org/10.1145/3805862.3805923">
+          <span class="year" aria-hidden="true">2026</span>
+          <span class="venue">ICIIT 2026 · ACM</span>
+          <h3>Insect Detection for Agricultural Pest Removal Using YOLO</h3>
+          <p>Real-time detection of insect populations for more precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo · Da Nang.</p>
+          <span class="read">Read paper <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="tile paper glow reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33">
+          <span class="year" aria-hidden="true">2025</span>
+          <span class="venue">AJCAI 2025 · Springer LNAI</span>
+          <h3>Four Seasons in One Day: Weather Forecasting &amp; Shelter Suggestion</h3>
+          <p>Multimodal forecasting from weather data, satellite imagery and social signals for Sydney, Melbourne and Canberra. First author · Canberra.</p>
+          <span class="read">Read paper <span aria-hidden="true">↗</span></span>
+        </a>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
-      <p class="contact-kicker reveal">Have a project or an internship in mind?</p>
-      <a class="contact-mail reveal" href="mailto:hoaimyn05@gmail.com">hoaimyn05@gmail.com</a>
-      <ul class="contact-links reveal">
-        <li><a class="u" href="tel:+84982289048">0982 289 048</a></li>
-        <li><a class="u" href="https://www.linkedin.com/in/hoimy935/">LinkedIn</a></li>
-        <li><a class="u" href="https://www.facebook.com/hoimy.935/">Facebook</a></li>
-        <li><a class="u" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Google Scholar</a></li>
-        <li><a class="u" href="https://github.com/hoaimyn05">GitHub</a></li>
-      </ul>
+    <section class="section" id="about">
+      <div class="bento about-bento">
+        <article class="tile about-card reveal">
+          <p class="eyebrow">About</p>
+          <p class="about-text">I like the moment an idea from a paper becomes something that <em class="grad-text">runs reliably</em> for real people. I'm studying AI at FPT University and spend most of my time building, measuring and shipping models.</p>
+        </article>
+        <article class="tile tools reveal">
+          <p class="eyebrow">Toolkit</p>
+          <ul>
+            <li>Python</li><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>YOLO</li><li>FastAPI</li><li>Streamlit</li><li>Docker</li><li>PostgreSQL</li><li>AWS</li><li>SQL</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="cta reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's build something <em>real.</em></h2>
+        <a class="cta-mail" href="mailto:hoaimyn05@gmail.com">hoaimyn05@gmail.com <span aria-hidden="true">↗</span></a>
+        <div class="cta-links">
+          <a href="tel:+84982289048">0982 289 048</a>
+          <a href="https://www.linkedin.com/in/hoimy935/">LinkedIn</a>
+          <a href="https://www.facebook.com/hoimy.935/">Facebook</a>
+          <a href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Scholar</a>
+          <a href="https://github.com/hoaimyn05">GitHub</a>
+        </div>
+      </div>
     </section>
   </main>
 
