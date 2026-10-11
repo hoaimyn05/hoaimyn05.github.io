@@ -88,8 +88,14 @@ if (!reducedMotion) document.querySelectorAll(WORD_TARGETS).forEach(splitWords);
 const pagesForText = [...document.querySelectorAll('.page')];
 pagesForText.forEach((page) => {
   let n = 0;
-  page.querySelectorAll('.w, .ch').forEach((el) => {
-    el.style.setProperty('--d', `${Math.min(n++, 60) * 14}ms`);
+  page.querySelectorAll('.w > span, .ch').forEach((el) => {
+    // each piece starts somewhere off to the side, above or below
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 50;
+    el.style.setProperty('--tx', `${Math.round(Math.cos(angle) * dist)}vw`);
+    el.style.setProperty('--ty', `${Math.round(Math.sin(angle) * dist * 0.8)}vh`);
+    el.style.setProperty('--tr', `${Math.round(Math.random() * 160 - 80)}deg`);
+    el.style.setProperty('--d', `${Math.min(n++, 70) * 12}ms`);
   });
 });
 const enterPage = (page) => {
