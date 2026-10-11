@@ -1,90 +1,112 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const hasIO = 'IntersectionObserver' in window;
 
-// Fade elements up as they enter the viewport, staggered within each group
-const items = document.querySelectorAll('.reveal');
-if (reducedMotion || !hasIO) {
-  items.forEach((item) => item.classList.add('is-visible'));
-} else {
-  items.forEach((item) => {
-    const siblings = [...item.parentElement.children].filter((el) => el.classList.contains('reveal'));
-    item.style.transitionDelay = `${Math.min(siblings.indexOf(item), 4) * 70}ms`;
-  });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+// Break headline text into letters that drop in and hop on hover
+function splitLetters(root) {
+  let n = 0;
+  const walk = (node) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(part); return; }
+          const word = document.createElement('span');
+          word.style.whiteSpace = 'nowrap';
+          [...part].forEach((letter) => {
+            const ch = document.createElement('span');
+            ch.className = 'ch';
+            ch.setAttribute('aria-hidden', 'true');
+            ch.textContent = letter;
+            ch.style.setProperty('--d', `${n * 22}ms`);
+            ch.style.setProperty('--r', `${Math.round(Math.random() * 20 - 10)}deg`);
+            ch.style.setProperty('--r0', `${Math.round(Math.random() * 30 - 15)}deg`);
+            word.append(ch);
+            n++;
+          });
+          frag.append(word);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('grad-text') && child.tagName !== 'svg' && !child.classList.contains('giant-dot')) {
+        walk(child);
       }
     });
-  }, { threshold: 0.12 });
-  items.forEach((item) => observer.observe(item));
+  };
+  if (!root.getAttribute('aria-label')) root.setAttribute('aria-label', root.textContent.replace(/\s+/g, ' ').trim());
+  walk(root);
 }
+document.querySelectorAll('.fx').forEach(splitLetters);
+document.querySelectorAll('[data-split]').forEach(splitLetters);
 
-// Count numbers up once they are visible
+// Reveal blocks, headline letters and counters as they scroll into view
 const formatCount = (el, value) => {
   el.textContent = value.toFixed(Number(el.dataset.decimals || 0)) + (el.dataset.suffix || '');
 };
-const counters = document.querySelectorAll('[data-count]');
-if (!reducedMotion && hasIO) {
-  const countObserver = new IntersectionObserver((entries) => {
+const countUp = (el) => {
+  const target = Number(el.dataset.count);
+  const start = performance.now();
+  const tick = (now) => {
+    const k = Math.min((now - start) / 1200, 1);
+    formatCount(el, target * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+const revealables = document.querySelectorAll('.reveal, .fx, .giant');
+if (reducedMotion || !hasIO) {
+  revealables.forEach((el) => el.classList.add('is-visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = Number(el.dataset.count);
-      const start = performance.now();
-      const tick = (now) => {
-        const k = Math.min((now - start) / 1200, 1);
-        formatCount(el, target * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      countObserver.unobserve(el);
+      entry.target.classList.add('is-visible');
+      entry.target.querySelectorAll('[data-count]').forEach(countUp);
+      if (entry.target.dataset.count) countUp(entry.target);
+      observer.unobserve(entry.target);
     });
-  }, { threshold: 0.6 });
-  counters.forEach((el) => countObserver.observe(el));
+  }, { threshold: 0.15 });
+  revealables.forEach((el) => observer.observe(el));
 }
 
-// Audio bars in the featured project tile
-document.querySelectorAll('.wave').forEach((wave) => {
-  for (let i = 0; i < 28; i++) {
-    const bar = document.createElement('i');
-    bar.style.setProperty('--h', `${25 + Math.abs(Math.sin(i * 0.7)) * 75}%`);
-    bar.style.setProperty('--d', `${-(i % 7) * 0.2}s`);
-    wave.append(bar);
-  }
-});
-
-// Warm spotlight that follows the pointer inside each tile
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  document.querySelectorAll('.tile').forEach((tile) => {
-    tile.addEventListener('pointermove', (e) => {
-      const r = tile.getBoundingClientRect();
-      tile.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      tile.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-}
-
-// Frosted header once the page scrolls
-const header = document.querySelector('.site-header');
-const onScroll = () => header.classList.toggle('scrolled', scrollY > 20);
-addEventListener('scroll', onScroll, { passive: true });
-onScroll();
-
-// Page indicator follows the section in view
+// Scene changes: the page colour follows whichever section fills the middle of the screen
+const pages = [...document.querySelectorAll('.page')];
 const pagerLinks = [...document.querySelectorAll('.pager a')];
-if (hasIO && pagerLinks.length) {
-  const pageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      pagerLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('.page').forEach((page) => pageObserver.observe(page));
+const setScene = (page) => {
+  document.body.dataset.scene = page.dataset.scene;
+  page.classList.add('in-view');
+  pagerLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === `#${page.id}`));
+};
+if (hasIO) {
+  const sceneObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) setScene(entry.target); });
+  }, { rootMargin: '-48% 0px -48% 0px' });
+  pages.forEach((page) => sceneObserver.observe(page));
 }
+
+// Scene wipe on navigation: keycap-coloured bars cover the screen, jump, then uncover
+const wipe = document.querySelector('.wipe');
+let wiping = false;
+document.querySelectorAll('[data-wipe]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target || reducedMotion || wiping) return;
+    e.preventDefault();
+    wiping = true;
+    wipe.classList.remove('leave');
+    wipe.classList.add('cover');
+    setTimeout(() => {
+      window.scrollTo({ top: target.offsetTop, behavior: 'instant' });
+      setScene(target);
+      history.replaceState(null, '', link.getAttribute('href'));
+      wipe.classList.add('leave');
+      wipe.classList.remove('cover');
+      setTimeout(() => { wiping = false; }, 800);
+    }, 780);
+  });
+});
 
 // Skills keyboard: hovering or focusing a key presses it and shows its note
 const SKILLS = {
@@ -136,14 +158,11 @@ function showSkill(key) {
   click();
   note.classList.add('swap');
   setTimeout(() => {
+    note.style.setProperty('--note', key.dataset.skill === 'libs' ? '' : getComputedStyle(key).getPropertyValue('--c'));
     note.querySelector('.note-cat').textContent = skill.cat;
     note.querySelector('.note-name').textContent = skill.name;
     note.querySelector('.note-desc').textContent = skill.desc;
-    note.querySelector('.note-used').replaceChildren(...skill.used.map((u) => {
-      const li = document.createElement('li');
-      li.textContent = u;
-      return li;
-    }));
+    note.querySelector('.note-used b').textContent = skill.used.join(', ');
     note.classList.remove('swap');
   }, reducedMotion ? 0 : 140);
 }
@@ -157,16 +176,64 @@ keys.forEach((key) => {
     showSkill(key);
   });
 });
-if (keys[0]) keys[0].classList.add('active');
 
 const soundToggle = document.querySelector('.sound-toggle');
 soundToggle?.addEventListener('click', () => {
   soundOn = !soundOn;
   soundToggle.setAttribute('aria-pressed', String(soundOn));
   soundToggle.querySelector('b').textContent = soundOn ? 'on' : 'off';
-  soundToggle.querySelector('.sound-icon').textContent = soundOn ? '🔊' : '🔈';
   if (soundOn) click();
 });
+
+// Keys fly in from scattered points when Skills arrives and fly back out when it leaves
+const stage = document.querySelector('.keyboard-stage');
+if (stage) {
+  const board = stage.querySelector('.keyboard');
+  keys.forEach((key) => {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 380 + Math.random() * 420;
+    key.style.setProperty('--fx', `${Math.round(Math.cos(angle) * dist)}px`);
+    key.style.setProperty('--fy', `${Math.round(Math.sin(angle) * dist * 0.7 - 120)}px`);
+    key.style.setProperty('--fr', `${Math.round(Math.random() * 120 - 60)}deg`);
+  });
+  let rippleTimer;
+  const ripple = () => {
+    if (stage.matches(':hover')) return;
+    const order = [...keys].sort((a, b) => {
+      const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+      return (ra.left + ra.top) - (rb.left + rb.top);
+    });
+    order.forEach((key, i) => setTimeout(() => {
+      key.classList.add('typing');
+      setTimeout(() => key.classList.remove('typing'), 170);
+    }, i * 55));
+  };
+  if (reducedMotion || !hasIO) {
+    stage.classList.add('in');
+  } else {
+    new IntersectionObserver(([entry]) => {
+      stage.classList.toggle('in', entry.isIntersecting);
+      clearInterval(rippleTimer);
+      if (entry.isIntersecting) {
+        setTimeout(ripple, 1700);
+        rippleTimer = setInterval(ripple, 5200);
+      }
+    }, { threshold: 0.3 }).observe(stage);
+    if (finePointer) {
+      stage.addEventListener('pointermove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        board.style.setProperty('--rx', `${22 - y * 10}deg`);
+        board.style.setProperty('--rz', `${-3 + x * 8}deg`);
+      });
+      stage.addEventListener('pointerleave', () => {
+        board.style.removeProperty('--rx');
+        board.style.removeProperty('--rz');
+      });
+    }
+  }
+}
 
 // Contact form: send through FormSubmit, fall back to the visitor's mail app
 const form = document.querySelector('.mail-form');
@@ -203,95 +270,3 @@ form?.addEventListener('submit', async (e) => {
     label.textContent = 'Send message';
   }
 });
-
-// Keyboard glides in when the Skills page arrives and back out when it leaves;
-// while visible, a ripple of key presses runs across the board now and then.
-const stage = document.querySelector('.keyboard-stage');
-if (stage) {
-  const board = stage.querySelector('.keyboard');
-  let rippleTimer;
-  const ripple = () => {
-    if (stage.matches(':hover')) return;
-    const order = [...keys].sort((a, b) => {
-      const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
-      return (ra.left + ra.top) - (rb.left + rb.top);
-    });
-    order.forEach((key, i) => {
-      setTimeout(() => {
-        key.classList.add('typing');
-        setTimeout(() => key.classList.remove('typing'), 170);
-      }, i * 55);
-    });
-  };
-  // Scatter each key to its own starting point outside the board
-  keys.forEach((key) => {
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 380 + Math.random() * 420;
-    key.style.setProperty('--fx', `${Math.round(Math.cos(angle) * dist)}px`);
-    key.style.setProperty('--fy', `${Math.round(Math.sin(angle) * dist * 0.7 - 120)}px`);
-    key.style.setProperty('--fr', `${Math.round(Math.random() * 120 - 60)}deg`);
-  });
-  if (reducedMotion || !hasIO) {
-    stage.classList.add('in');
-  } else {
-    new IntersectionObserver(([entry]) => {
-      stage.classList.toggle('in', entry.isIntersecting);
-      clearInterval(rippleTimer);
-      if (entry.isIntersecting) {
-        setTimeout(ripple, 1700);
-        rippleTimer = setInterval(ripple, 5200);
-      }
-    }, { threshold: 0.3 }).observe(stage);
-
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      stage.addEventListener('pointermove', (e) => {
-        const r = stage.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        board.style.setProperty('--rx', `${24 - y * 10}deg`);
-        board.style.setProperty('--rz', `${-4 + x * 8}deg`);
-      });
-      stage.addEventListener('pointerleave', () => {
-        board.style.removeProperty('--rx');
-        board.style.removeProperty('--rz');
-      });
-    }
-  }
-}
-
-// Break headline text into letters that drop in and hop on hover
-function splitLetters(root) {
-  let n = 0;
-  const walk = (node) => {
-    [...node.childNodes].forEach((child) => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const frag = document.createDocumentFragment();
-        child.textContent.split(/(\s+)/).forEach((part) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) { frag.append(part); return; }
-          const word = document.createElement('span');
-          word.style.whiteSpace = 'nowrap';
-          [...part].forEach((letter) => {
-            const ch = document.createElement('span');
-            ch.className = 'ch';
-            ch.setAttribute('aria-hidden', 'true');
-            ch.textContent = letter;
-            ch.style.setProperty('--d', `${n * 22}ms`);
-            ch.style.setProperty('--r', `${Math.round(Math.random() * 20 - 10)}deg`);
-            ch.style.setProperty('--r0', `${Math.round(Math.random() * 30 - 15)}deg`);
-            word.append(ch);
-            n++;
-          });
-          frag.append(word);
-        });
-        child.replaceWith(frag);
-      } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('grad-text') && child.tagName !== 'svg' && !child.classList.contains('giant-dot')) {
-        walk(child);
-      }
-    });
-  };
-  if (!root.getAttribute('aria-label')) root.setAttribute('aria-label', root.textContent.replace(/\s+/g, ' ').trim());
-  walk(root);
-}
-document.querySelectorAll('.fx').forEach(splitLetters);
-document.querySelectorAll('[data-split]').forEach((el) => splitLetters(el));
