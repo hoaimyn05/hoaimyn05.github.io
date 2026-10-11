@@ -223,6 +223,14 @@ if (stage) {
       }, i * 55);
     });
   };
+  // Scatter each key to its own starting point outside the board
+  keys.forEach((key) => {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 380 + Math.random() * 420;
+    key.style.setProperty('--fx', `${Math.round(Math.cos(angle) * dist)}px`);
+    key.style.setProperty('--fy', `${Math.round(Math.sin(angle) * dist * 0.7 - 120)}px`);
+    key.style.setProperty('--fr', `${Math.round(Math.random() * 120 - 60)}deg`);
+  });
   if (reducedMotion || !hasIO) {
     stage.classList.add('in');
   } else {
@@ -240,8 +248,8 @@ if (stage) {
         const r = stage.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        board.style.setProperty('--rx', `${32 - y * 10}deg`);
-        board.style.setProperty('--rz', `${-7 + x * 8}deg`);
+        board.style.setProperty('--rx', `${24 - y * 10}deg`);
+        board.style.setProperty('--rz', `${-4 + x * 8}deg`);
       });
       stage.addEventListener('pointerleave', () => {
         board.style.removeProperty('--rx');
