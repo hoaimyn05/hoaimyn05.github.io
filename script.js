@@ -325,3 +325,94 @@ form?.addEventListener('submit', async (e) => {
     label.textContent = 'Send message';
   }
 });
+
+// Text scramble on hover: letters shuffle through glyphs before settling
+const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*+=<>/';
+document.querySelectorAll('[data-scramble]').forEach((el) => {
+  const original = el.textContent;
+  let raf;
+  const run = () => {
+    if (reducedMotion) return;
+    cancelAnimationFrame(raf);
+    const start = performance.now();
+    const step = (now) => {
+      const p = (now - start) / 450;
+      el.textContent = [...original].map((c, i) => {
+        if (c === ' ' || i / original.length < p) return c;
+        return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      }).join('');
+      if (p < 1) raf = requestAnimationFrame(step);
+      else el.textContent = original;
+    };
+    raf = requestAnimationFrame(step);
+  };
+  (el.closest('a, button') || el).addEventListener('pointerenter', run);
+});
+
+// About paragraph: words light up as the paragraph scrolls through the viewport
+const lit = document.querySelector('[data-scroll-lit]');
+const litWords = [];
+if (lit) {
+  const text = lit.textContent.trim();
+  lit.setAttribute('aria-label', text);
+  lit.textContent = '';
+  const hot = /^(research|engineering|models|APIs|use\.?)$/i;
+  text.split(/\s+/).forEach((word, i) => {
+    const span = document.createElement('span');
+    span.className = 'lw' + (hot.test(word.replace(/[,:]/g, '')) ? ' hot-word' : '');
+    span.setAttribute('aria-hidden', 'true');
+    span.textContent = word;
+    if (i) lit.append(' ');
+    lit.append(span);
+    litWords.push(span);
+  });
+}
+
+// Scroll-driven effects: hero parallax, marquee velocity, lit words
+const nameParts = document.querySelectorAll('.hero-stage .hn-1, .hero-stage .hn-2');
+const cut = document.querySelector('.cutout');
+const bandTrack = document.querySelector('.band-track');
+let lastY = scrollY, bandX = 0, velocity = 0;
+const loop = () => {
+  const y = scrollY;
+  velocity = velocity * 0.9 + (y - lastY) * 0.1;
+  lastY = y;
+  if (!reducedMotion) {
+    const k = Math.min(y / innerHeight, 1.2);
+    nameParts.forEach((el) => {
+      el.style.setProperty('--px', `${(el.classList.contains('hn-1') ? -1 : 1) * k * 18}vw`);
+    });
+    if (cut) {
+      cut.style.setProperty('--cy', `${k * 10}%`);
+      cut.style.setProperty('--cs', `${1 + k * 0.08}`);
+    }
+    if (bandTrack) {
+      bandX -= 0.6 + Math.abs(velocity) * 0.25;
+      const half = bandTrack.scrollWidth / 2;
+      if (-bandX > half) bandX += half;
+      bandTrack.style.setProperty('--bx', `${bandX}px`);
+    }
+  }
+  if (lit) {
+    const r = lit.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4)));
+    const on = Math.round(p * litWords.length);
+    litWords.forEach((w, i) => {
+      w.classList.toggle('on', i < on || reducedMotion);
+      w.classList.toggle('hot', w.classList.contains('hot-word') && i < on);
+    });
+  }
+  requestAnimationFrame(loop);
+};
+requestAnimationFrame(loop);
+
+// Magnetic buttons
+if (finePointer && !reducedMotion) {
+  document.querySelectorAll('.magnetic').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.3}px, ${(e.clientY - r.top - r.height / 2) * 0.4}px)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+}

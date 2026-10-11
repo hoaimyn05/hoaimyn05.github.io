@@ -26,11 +26,11 @@
   <header class="site-header">
     <a class="brand" href="#home" data-wipe>Hoai My<span>.</span></a>
     <nav aria-label="Primary navigation">
-      <a href="#about" data-wipe>About</a>
-      <a href="#skills" data-wipe>Skills</a>
-      <a href="#projects" data-wipe>Projects</a>
-      <a href="#research" data-wipe>Research</a>
-      <a href="#contact" data-wipe>Contact</a>
+      <a href="#about" data-wipe data-scramble>About</a>
+      <a href="#skills" data-wipe data-scramble>Skills</a>
+      <a href="#projects" data-wipe data-scramble>Projects</a>
+      <a href="#research" data-wipe data-scramble>Research</a>
+      <a href="#contact" data-wipe data-scramble>Contact</a>
     </nav>
   </header>
 
@@ -46,37 +46,36 @@
   <main id="main">
     <!-- 01 Home -->
     <section class="page home" id="home" data-scene="home">
-      <div class="home-grid">
-        <div class="home-text">
-          <p class="index"><b>01</b> Home</p>
-          <h1 class="giant" aria-label="Hoai My">
-            <span class="line" data-split>Hoai</span>
-            <span class="line accent"><span data-split>My.</span><svg class="scribble" viewBox="0 0 300 40" aria-hidden="true"><path d="M6 28C60 10 120 8 170 18S260 34 294 12"/></svg></span>
-          </h1>
-          <p class="lead reveal">AI engineer &amp; researcher turning research into <em>products people use.</em></p>
+      <div class="hero-stage">
+        <h1 class="hero-name giant" aria-label="Hoai My"><span class="hn hn-1" data-split>HOAI</span><span class="hn hn-2" data-split>MY</span></h1>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <img class="cutout" src="assets/hoai-my-cutout.png" width="900" height="1200" alt="Nguyen Hoai My" />
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-copy">
+          <p class="index"><b>01</b> AI engineer &amp; researcher · Ho Chi Minh City</p>
+          <p class="lead reveal">Turning research into <em>products people use.</em></p>
           <div class="actions reveal">
-            <a class="btn btn-solid" href="#about" data-wipe>About me →</a>
-            <a class="link" href="#contact" data-wipe>Say hello</a>
+            <a class="btn btn-solid magnetic" href="#about" data-wipe><span data-scramble>About me</span> →</a>
+            <a class="link" href="#contact" data-wipe data-scramble>Say hello</a>
           </div>
-          <dl class="numbers reveal">
-            <div><dt data-count="2">2</dt><dd>peer-reviewed papers</dd></div>
-            <div><dt data-count="89.5" data-decimals="1" data-suffix="%">89.5%</dt><dd>best model accuracy</dd></div>
-            <div><dt data-count="5" data-suffix="+">5+</dt><dd>AI systems built</dd></div>
-          </dl>
         </div>
-        <figure class="portrait reveal">
-          <img src="assets/hoai-my.jpg" width="960" height="1280" alt="Nguyen Hoai My standing in front of a sunset" />
-          <figcaption>Ho Chi Minh City · open to AI internships</figcaption>
-        </figure>
+        <dl class="numbers reveal">
+          <div><dt data-count="2">2</dt><dd>papers</dd></div>
+          <div><dt data-count="89.5" data-decimals="1" data-suffix="%">89.5%</dt><dd>best accuracy</dd></div>
+          <div><dt data-count="5" data-suffix="+">5+</dt><dd>AI systems</dd></div>
+        </dl>
       </div>
     </section>
+
+    <div class="band" aria-hidden="true"><div class="band-track"><span>AI ENGINEER</span><i>✦</i><span class="o">RESEARCHER</span><i>✦</i><span>COMPUTER VISION</span><i>✦</i><span class="o">LLM SYSTEMS</span><i>✦</i><span>SPEECH AI</span><i>✦</i><span>AI ENGINEER</span><i>✦</i><span class="o">RESEARCHER</span><i>✦</i><span>COMPUTER VISION</span><i>✦</i><span class="o">LLM SYSTEMS</span><i>✦</i><span>SPEECH AI</span><i>✦</i></div></div>
 
     <!-- 02 About -->
     <section class="page" id="about" data-scene="about">
       <p class="index"><b>02</b> About me</p>
       <h2 class="title fx">Curious about AI, <em>obsessed</em> with <mark>shipping.</mark></h2>
       <div class="about-grid">
-        <p class="about-lead reveal">I'm Nguyen Hoai My, an AI student at FPT University in Ho Chi Minh City. I work where research meets engineering: reading papers, turning ideas into models, measuring them honestly, and wrapping them in APIs and dashboards people can actually use.</p>
+        <p class="about-lead" data-scroll-lit>I'm Nguyen Hoai My, an AI student at FPT University in Ho Chi Minh City. I work where research meets engineering: reading papers, turning ideas into models, measuring them honestly, and wrapping them in APIs and dashboards people can actually use.</p>
         <dl class="facts reveal">
           <div><dt>Education</dt><dd>FPT University — Information Technology (AI), 2023 – 2027</dd></div>
           <div><dt>Based in</dt><dd>Ho Chi Minh City, Vietnam</dd></div>
