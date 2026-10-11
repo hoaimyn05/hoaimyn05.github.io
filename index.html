@@ -102,32 +102,34 @@
       </header>
       <div class="skills-layout">
         <div class="keyboard-wrap reveal">
+          <div class="keyboard-stage">
           <div class="keyboard" role="group" aria-label="Skills keyboard. Hover or focus a key to read about the skill.">
             <div class="krow">
-              <button class="key k-accent" style="--w:1.5" data-skill="python"><i>py</i>Python</button>
-              <button class="key" data-skill="numpy"><i>np</i>NumPy</button>
-              <button class="key" data-skill="pandas"><i>pd</i>pandas</button>
-              <button class="key" data-skill="sql"><i>db</i>SQL</button>
-              <button class="key" style="--w:1.25" data-skill="matplotlib"><i>plt</i>Matplotlib</button>
-              <button class="key k-light" data-skill="seaborn"><i>sns</i>Seaborn</button>
+              <button class="key k-accent" style="--i:0" data-skill="python"><img src="assets/logos/python.svg" alt="" width="40" height="40" /><span>Python</span></button>
+              <button class="key" style="--i:1" data-skill="numpy"><img src="assets/logos/numpy.svg" alt="" width="40" height="40" /><span>NumPy</span></button>
+              <button class="key" style="--i:2" data-skill="pandas"><img src="assets/logos/pandas.svg" alt="" width="40" height="40" /><span>pandas</span></button>
+              <button class="key k-dark" style="--i:3" data-skill="sql"><img src="assets/logos/sql.svg" alt="" width="40" height="40" /><span>SQL</span></button>
+              <button class="key" style="--i:4" data-skill="matplotlib"><img src="assets/logos/matplotlib.svg" alt="" width="40" height="40" /><span>Matplotlib</span></button>
             </div>
             <div class="krow">
-              <button class="key k-light" style="--w:1.25" data-skill="pytorch"><i>torch</i>PyTorch</button>
-              <button class="key" style="--w:1.3" data-skill="tensorflow"><i>tf</i>TensorFlow</button>
-              <button class="key" data-skill="keras"><i>k</i>Keras</button>
-              <button class="key" style="--w:1.3" data-skill="sklearn"><i>sk</i>scikit-learn</button>
-              <button class="key k-accent" data-skill="xgboost"><i>xgb</i>XGBoost</button>
+              <button class="key" style="--i:5" data-skill="seaborn"><img src="assets/logos/seaborn.svg" alt="" width="40" height="40" /><span>Seaborn</span></button>
+              <button class="key k-dark" style="--i:6" data-skill="pytorch"><img src="assets/logos/pytorch.svg" alt="" width="40" height="40" /><span>PyTorch</span></button>
+              <button class="key k-accent" style="--i:7" data-skill="tensorflow"><img src="assets/logos/tensorflow.svg" alt="" width="40" height="40" /><span>TensorFlow</span></button>
+              <button class="key" style="--i:8" data-skill="keras"><img src="assets/logos/keras.svg" alt="" width="40" height="40" /><span>Keras</span></button>
+              <button class="key" style="--i:9" data-skill="sklearn"><img src="assets/logos/sklearn.svg" alt="" width="40" height="40" /><span>scikit-learn</span></button>
             </div>
             <div class="krow">
-              <button class="key" data-skill="opencv"><i>cv2</i>OpenCV</button>
-              <button class="key k-accent" data-skill="yolo"><i>det</i>YOLO</button>
-              <button class="key" data-skill="docker"><i>🐳</i>Docker</button>
-              <button class="key" data-skill="fastapi"><i>api</i>FastAPI</button>
-              <button class="key k-light" style="--w:1.6" data-skill="streamlit"><i>↵</i>Streamlit</button>
+              <button class="key k-dark" style="--i:10" data-skill="xgboost"><img src="assets/logos/xgboost.svg" alt="" width="40" height="40" /><span>XGBoost</span></button>
+              <button class="key k-dark" style="--i:11" data-skill="opencv"><img src="assets/logos/opencv.svg" alt="" width="40" height="40" /><span>OpenCV</span></button>
+              <button class="key k-accent" style="--i:12" data-skill="yolo"><img src="assets/logos/yolo.svg" alt="" width="40" height="40" /><span>YOLO</span></button>
+              <button class="key" style="--i:13" data-skill="docker"><img src="assets/logos/docker.svg" alt="" width="40" height="40" /><span>Docker</span></button>
+              <button class="key k-dark" style="--i:14" data-skill="fastapi"><img src="assets/logos/fastapi.svg" alt="" width="40" height="40" /><span>FastAPI</span></button>
             </div>
             <div class="krow">
-              <button class="key key-space" data-skill="libs"><i>space</i>Python libraries</button>
+              <button class="key k-dark" style="--i:15" data-skill="streamlit"><img src="assets/logos/streamlit.svg" alt="" width="40" height="40" /><span>Streamlit</span></button>
+              <button class="key key-space k-accent" style="--i:16" data-skill="libs"><span class="space-logos" aria-hidden="true"><img src="assets/logos/python.svg" alt="" /><img src="assets/logos/numpy.svg" alt="" /><img src="assets/logos/pandas.svg" alt="" /></span><span>Python libraries</span></button>
             </div>
+          </div>
           </div>
           <button class="sound-toggle" type="button" aria-pressed="false"><span class="sound-icon" aria-hidden="true">🔈</span> Key sound: <b>off</b></button>
         </div>
@@ -138,7 +140,7 @@
           <p class="note-desc">My main language for everything — data wrangling, model training, evaluation and the APIs that serve the results.</p>
           <p class="note-label">Where I use it</p>
           <ul class="note-used"><li>Every project</li><li>Research code</li></ul>
-          <p class="note-hint">Hover or tab through the keys →</p>
+          <p class="note-hint">Hover, tap or tab through the keys</p>
         </aside>
       </div>
     </section>
