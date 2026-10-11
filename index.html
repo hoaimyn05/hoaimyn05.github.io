@@ -13,245 +13,206 @@
   <link rel="preload" as="image" href="assets/hoai-my.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="fire-cursor.js"></script>
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-scene="home">
   <a class="skip-link" href="#main">Skip to content</a>
   <canvas id="fire" aria-hidden="true"></canvas>
-  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
   <header class="site-header">
-    <a class="brand" href="#home"><span class="brand-dot"></span>Hoai My</a>
-    <nav class="pill-nav" aria-label="Primary navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#research">Research</a>
+    <a class="brand" href="#home" data-wipe>Hoai My<span>.</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#about" data-wipe>About</a>
+      <a href="#skills" data-wipe>Skills</a>
+      <a href="#projects" data-wipe>Projects</a>
+      <a href="#research" data-wipe>Research</a>
+      <a href="#contact" data-wipe>Contact</a>
     </nav>
-    <a class="btn btn-light btn-sm" href="#contact">Contact</a>
   </header>
 
   <nav class="pager" aria-label="Page sections">
-    <a href="#home" data-label="Home"><span>01</span></a>
-    <a href="#about" data-label="About me"><span>02</span></a>
-    <a href="#skills" data-label="Skills"><span>03</span></a>
-    <a href="#projects" data-label="Projects"><span>04</span></a>
-    <a href="#research" data-label="Research"><span>05</span></a>
-    <a href="#contact" data-label="Contact"><span>06</span></a>
+    <a href="#home" data-label="Home" data-wipe></a>
+    <a href="#about" data-label="About me" data-wipe></a>
+    <a href="#skills" data-label="Skills" data-wipe></a>
+    <a href="#projects" data-label="Projects" data-wipe></a>
+    <a href="#research" data-label="Research" data-wipe></a>
+    <a href="#contact" data-label="Contact" data-wipe></a>
   </nav>
 
   <main id="main">
     <!-- 01 Home -->
-    <section class="page home" id="home">
-      <h1 class="giant" aria-label="Hoai My">
-        <span class="giant-line" data-split>Hoai</span><span class="giant-line grad"><span data-split>My</span><span class="giant-dot">.</span><svg class="scribble" viewBox="0 0 300 40" aria-hidden="true"><path d="M6 28C60 10 120 8 170 18S260 34 294 12"/></svg></span>
-      </h1>
-      <span class="sticker sticker-hero" aria-hidden="true">AI engineer ✦ researcher</span>
-      <div class="bento hero-bento">
-        <article class="tile intro reveal">
-          <p class="status"><span class="dot"></span>Open to AI internships</p>
-          <p class="intro-text">AI engineer &amp; researcher turning research into <em class="grad-text">products people use.</em></p>
-          <div class="actions">
-            <a class="btn btn-grad" href="#about">About me <span aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="#contact">Say hello</a>
+    <section class="page home" id="home" data-scene="home">
+      <div class="home-grid">
+        <div class="home-text">
+          <p class="index"><b>01</b> Home</p>
+          <h1 class="giant" aria-label="Hoai My">
+            <span class="line" data-split>Hoai</span>
+            <span class="line accent"><span data-split>My.</span><svg class="scribble" viewBox="0 0 300 40" aria-hidden="true"><path d="M6 28C60 10 120 8 170 18S260 34 294 12"/></svg></span>
+          </h1>
+          <p class="lead reveal">AI engineer &amp; researcher turning research into <em>products people use.</em></p>
+          <div class="actions reveal">
+            <a class="btn btn-solid" href="#about" data-wipe>About me →</a>
+            <a class="link" href="#contact" data-wipe>Say hello</a>
           </div>
-        </article>
-        <figure class="tile photo reveal">
+          <dl class="numbers reveal">
+            <div><dt data-count="2">2</dt><dd>peer-reviewed papers</dd></div>
+            <div><dt data-count="89.5" data-decimals="1" data-suffix="%">89.5%</dt><dd>best model accuracy</dd></div>
+            <div><dt data-count="5" data-suffix="+">5+</dt><dd>AI systems built</dd></div>
+          </dl>
+        </div>
+        <figure class="portrait reveal">
           <img src="assets/hoai-my.jpg" width="960" height="1280" alt="Nguyen Hoai My standing in front of a sunset" />
-          <figcaption><span>📍 Ho Chi Minh City</span><span>FPT University · AI</span></figcaption>
+          <figcaption>Ho Chi Minh City · open to AI internships</figcaption>
         </figure>
-        <article class="tile stat stat-a reveal">
-          <b class="grad-text" data-count="2">2</b>
-          <span>peer-reviewed papers<br /><small>AJCAI 2025 · ICIIT 2026</small></span>
-        </article>
-        <article class="tile stat stat-b reveal">
-          <b class="grad-text" data-count="89.5" data-decimals="1" data-suffix="%">89.5%</b>
-          <span>best model accuracy<br /><small>real-time emotion API</small></span>
-        </article>
       </div>
-      <a class="next" href="#about" aria-label="Next: About me"><span>Scroll</span><i></i></a>
     </section>
 
     <!-- 02 About -->
-    <section class="page" id="about">
-      <header class="page-head reveal">
-        <p class="eyebrow">02 — About me</p>
-        <h2 class="fx"><span class="outline">Curious</span> about AI, <em class="grad-text">obsessed with</em> <mark>shipping.</mark></h2>
-        <span class="sticker" aria-hidden="true">hi, it's me 👋</span>
-      </header>
-      <div class="bento about-bento">
-        <article class="tile about-story reveal">
-          <p class="about-lead">I'm Nguyen Hoai My, an AI student at FPT University in Ho Chi Minh City.</p>
-          <p>I work where research meets engineering: reading papers, turning ideas into models, measuring them honestly, and wrapping them in APIs and dashboards people can actually use. So far that has meant speech emotion recognition, real-time text analytics, stock forecasting with an explaining chatbot, and two peer-reviewed papers on multimodal weather forecasting and YOLO-based pest detection.</p>
-          <p>I like leading small teams, writing clean pipelines, and the moment a demo works for someone other than me.</p>
-        </article>
-        <article class="tile fact reveal"><span>Education</span><b>FPT University</b><small>Information Technology · AI · 2023 – 2027</small></article>
-        <article class="tile fact reveal"><span>Based in</span><b>Ho Chi Minh City</b><small>Vietnam · open to remote</small></article>
-        <article class="tile fact reveal"><span>Languages</span><b>Vietnamese · English</b><small>English B2 CEFR · reads &amp; writes research</small></article>
-        <article class="tile fact reveal"><span>Leadership</span><b data-count="2">2</b><small>class projects led as team lead</small></article>
+    <section class="page" id="about" data-scene="about">
+      <p class="index"><b>02</b> About me</p>
+      <h2 class="title fx">Curious about AI, <em>obsessed</em> with <mark>shipping.</mark></h2>
+      <div class="about-grid">
+        <p class="about-lead reveal">I'm Nguyen Hoai My, an AI student at FPT University in Ho Chi Minh City. I work where research meets engineering: reading papers, turning ideas into models, measuring them honestly, and wrapping them in APIs and dashboards people can actually use.</p>
+        <dl class="facts reveal">
+          <div><dt>Education</dt><dd>FPT University — Information Technology (AI), 2023 – 2027</dd></div>
+          <div><dt>Based in</dt><dd>Ho Chi Minh City, Vietnam</dd></div>
+          <div><dt>Languages</dt><dd>Vietnamese · English B2 CEFR</dd></div>
+          <div><dt>Leadership</dt><dd>Team lead on two class projects</dd></div>
+        </dl>
       </div>
     </section>
 
     <!-- 03 Skills -->
-    <section class="page" id="skills">
-      <header class="page-head reveal">
-        <p class="eyebrow">03 — Skills</p>
-        <h2 class="fx">Press a <span class="outline">key,</span> <em class="grad-text">meet a</em> <mark>skill.</mark></h2>
-        <span class="sticker sticker-alt" aria-hidden="true">try hovering ↓</span>
-      </header>
+    <section class="page" id="skills" data-scene="skills">
+      <p class="index"><b>03</b> Skills</p>
+      <h2 class="title fx">Press a key, <em>meet</em> a <mark>skill.</mark></h2>
       <div class="skills-layout">
-        <div class="keyboard-wrap reveal">
-          <div class="keyboard-stage">
-          <div class="keyboard" role="group" aria-label="Skills keyboard. Hover or focus a key to read about the skill.">
+        <div class="keyboard-stage">
+          <div class="keyboard" role="group" aria-label="Skills keyboard. Hover, tap or focus a key to read about the skill.">
             <div class="krow">
-              <button class="key" style="--i:0; --c:#ffd43b" data-skill="python"><img src="assets/logos/python.svg" alt="" width="40" height="40" /><span>Python</span></button>
-              <button class="key" style="--i:1; --c:#4dabcf" data-skill="numpy"><img src="assets/logos/numpy.svg" alt="" width="40" height="40" /><span>NumPy</span></button>
-              <button class="key" style="--i:2; --c:#e70488" data-skill="pandas"><img src="assets/logos/pandas.svg" alt="" width="40" height="40" /><span>pandas</span></button>
-              <button class="key" style="--i:3; --c:#336791" data-skill="sql"><img src="assets/logos/sql.svg" alt="" width="40" height="40" /><span>SQL</span></button>
-              <button class="key" style="--i:4; --c:#11557c" data-skill="matplotlib"><img src="assets/logos/matplotlib.svg" alt="" width="40" height="40" /><span>Matplotlib</span></button>
+              <button class="key ink-dark" style="--i:0; --c:#f9d342" data-skill="python"><span class="cap"><img src="assets/logos/python.svg" alt="" /><span>Python</span></span></button>
+              <button class="key" style="--i:1; --c:#3a9fc9" data-skill="numpy"><span class="cap"><img src="assets/logos/numpy.svg" alt="" /><span>NumPy</span></span></button>
+              <button class="key" style="--i:2; --c:#e70488" data-skill="pandas"><span class="cap"><img src="assets/logos/pandas.svg" alt="" /><span>pandas</span></span></button>
+              <button class="key" style="--i:3; --c:#2f5f8f" data-skill="sql"><span class="cap"><img src="assets/logos/sql.svg" alt="" /><span>SQL</span></span></button>
+              <button class="key ink-dark text-legend" style="--i:4; --c:#ff8a1f" data-skill="matplotlib"><span class="cap"><img src="assets/logos/matplotlib.svg" alt="" /><span>Matplotlib</span></span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:5; --c:#4c86b8" data-skill="seaborn"><img src="assets/logos/seaborn.svg" alt="" width="40" height="40" /><span>Seaborn</span></button>
-              <button class="key" style="--i:6; --c:#ee4c2c" data-skill="pytorch"><img src="assets/logos/pytorch.svg" alt="" width="40" height="40" /><span>PyTorch</span></button>
-              <button class="key" style="--i:7; --c:#ff8f00" data-skill="tensorflow"><img src="assets/logos/tensorflow.svg" alt="" width="40" height="40" /><span>TensorFlow</span></button>
-              <button class="key" style="--i:8; --c:#d00000" data-skill="keras"><img src="assets/logos/keras.svg" alt="" width="40" height="40" /><span>Keras</span></button>
-              <button class="key" style="--i:9; --c:#f7931e" data-skill="sklearn"><img src="assets/logos/sklearn.svg" alt="" width="40" height="40" /><span>scikit-learn</span></button>
+              <button class="key text-legend" style="--i:5; --c:#7a5af8" data-skill="seaborn"><span class="cap"><img src="assets/logos/seaborn.svg" alt="" /><span>Seaborn</span></span></button>
+              <button class="key" style="--i:6; --c:#ee4c2c" data-skill="pytorch"><span class="cap"><img src="assets/logos/pytorch.svg" alt="" /><span>PyTorch</span></span></button>
+              <button class="key ink-dark" style="--i:7; --c:#ffb000" data-skill="tensorflow"><span class="cap"><img src="assets/logos/tensorflow.svg" alt="" /><span>TensorFlow</span></span></button>
+              <button class="key text-legend" style="--i:8; --c:#c4122f" data-skill="keras"><span class="cap"><img src="assets/logos/keras.svg" alt="" /><span>Keras</span></span></button>
+              <button class="key text-legend" style="--i:9; --c:#2b2d36" data-skill="sklearn"><span class="cap"><img src="assets/logos/sklearn.svg" alt="" /><span>scikit-learn</span></span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:10; --c:#189fdd" data-skill="xgboost"><img src="assets/logos/xgboost.svg" alt="" width="40" height="40" /><span>XGBoost</span></button>
-              <button class="key" style="--i:11; --c:#5c3ee8" data-skill="opencv"><img src="assets/logos/opencv.svg" alt="" width="40" height="40" /><span>OpenCV</span></button>
-              <button class="key" style="--i:12; --c:#0b23a9" data-skill="yolo"><img src="assets/logos/yolo.svg" alt="" width="40" height="40" /><span>YOLO</span></button>
-              <button class="key" style="--i:13; --c:#2496ed" data-skill="docker"><img src="assets/logos/docker.svg" alt="" width="40" height="40" /><span>Docker</span></button>
-              <button class="key" style="--i:14; --c:#05998b" data-skill="fastapi"><img src="assets/logos/fastapi.svg" alt="" width="40" height="40" /><span>FastAPI</span></button>
+              <button class="key" style="--i:10; --c:#1592d1" data-skill="xgboost"><span class="cap"><img src="assets/logos/xgboost.svg" alt="" /><span>XGBoost</span></span></button>
+              <button class="key ink-dark" style="--i:11; --c:#34d27b" data-skill="opencv"><span class="cap"><img src="assets/logos/opencv.svg" alt="" /><span>OpenCV</span></span></button>
+              <button class="key" style="--i:12; --c:#1631c4" data-skill="yolo"><span class="cap"><img src="assets/logos/yolo.svg" alt="" /><span>YOLO</span></span></button>
+              <button class="key" style="--i:13; --c:#2496ed" data-skill="docker"><span class="cap"><img src="assets/logos/docker.svg" alt="" /><span>Docker</span></span></button>
+              <button class="key" style="--i:14; --c:#05998b" data-skill="fastapi"><span class="cap"><img src="assets/logos/fastapi.svg" alt="" /><span>FastAPI</span></span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:15; --c:#ff4b4b" data-skill="streamlit"><img src="assets/logos/streamlit.svg" alt="" width="40" height="40" /><span>Streamlit</span></button>
-              <button class="key key-space" style="--i:16; --c:#ff7a1f" data-skill="libs"><span class="space-logos" aria-hidden="true"><img src="assets/logos/python.svg" alt="" /><img src="assets/logos/numpy.svg" alt="" /><img src="assets/logos/pandas.svg" alt="" /></span><span>Python libraries</span></button>
+              <button class="key" style="--i:15; --c:#ff4b4b" data-skill="streamlit"><span class="cap"><img src="assets/logos/streamlit.svg" alt="" /><span>Streamlit</span></span></button>
+              <button class="key key-space ink-dark" style="--i:16; --c:#efe9df" data-skill="libs"><span class="cap"><span>Python libraries</span></span></button>
             </div>
           </div>
-          </div>
-          <button class="sound-toggle" type="button" aria-pressed="false"><span class="sound-icon" aria-hidden="true">🔈</span> Key sound: <b>off</b></button>
+          <button class="sound-toggle link" type="button" aria-pressed="false">Key sound: <b>off</b></button>
         </div>
 
-        <aside class="tile key-note reveal" aria-live="polite">
+        <aside class="key-note" aria-live="polite">
           <p class="note-cat">Language</p>
-          <h3 class="note-name grad-text">Python</h3>
+          <h3 class="note-name">Python</h3>
           <p class="note-desc">My main language for everything — data wrangling, model training, evaluation and the APIs that serve the results.</p>
-          <p class="note-label">Where I use it</p>
-          <ul class="note-used"><li>Every project</li><li>Research code</li></ul>
-          <p class="note-hint">Hover, tap or tab through the keys</p>
+          <p class="note-used"><span>Where I use it —</span> <b>Every project, research code</b></p>
         </aside>
       </div>
     </section>
 
     <!-- 04 Projects -->
-    <section class="page" id="projects">
-      <header class="page-head reveal">
-        <p class="eyebrow">04 — Projects</p>
-        <h2 class="fx"><span class="outline">Things</span> I've <em class="grad-text">built.</em></h2>
-        <span class="sticker" aria-hidden="true">5 projects ✦</span>
-      </header>
-      <div class="bento work-bento">
-        <article class="tile project featured reveal">
-          <div class="tags"><span>Audio</span><span>CNN</span><span>Team lead</span></div>
-          <h3>Speech Emotion Recognition</h3>
-          <p>Hearing emotion in the voice: a CNN on MFCC features, benchmarked against SVM and BiLSTM baselines.</p>
-          <div class="metric"><b data-count="87" data-suffix="%">87%</b><span>accuracy</span></div>
-          <div class="wave" aria-hidden="true"></div>
-        </article>
-        <article class="tile project reveal">
-          <div class="tags"><span>NLP</span><span>FastAPI</span></div>
-          <h3>Real-time comment emotion</h3>
-          <p>Six-emotion classifier with TF–IDF and Logistic Regression, served live through an API.</p>
-          <div class="metric"><b data-count="89.5" data-decimals="1" data-suffix="%">89.5%</b><span>accuracy · F1 0.86</span></div>
-        </article>
-        <article class="tile project reveal">
-          <div class="tags"><span>Forecasting</span><span>LLM</span><span>Team lead</span></div>
-          <h3>Stock forecast + AI explainer</h3>
-          <p>XGBoost and LSTM forecasts in Streamlit, with a chatbot that explains every call.</p>
-          <div class="metric"><b data-count="1.3" data-decimals="1">1.3</b><span>Sharpe · 58% hit rate</span></div>
-        </article>
-        <article class="tile project reveal">
-          <div class="tags"><span>LLM</span><span>FinTech</span></div>
-          <h3>Flux AI</h3>
-          <p>A personal financial coach built on multi-step LLM orchestration.</p>
-          <div class="metric"><span class="live"><span class="dot"></span>In development</span></div>
-        </article>
-        <article class="tile project reveal">
-          <div class="tags"><span>Vision</span><span>Security</span></div>
-          <h3>Secure Face Login</h3>
-          <p>Anti-spoofing checks liveness before face recognition matches identity.</p>
-          <div class="metric"><span class="live">Liveness → identity</span></div>
-        </article>
-      </div>
+    <section class="page" id="projects" data-scene="projects">
+      <p class="index"><b>04</b> Projects</p>
+      <h2 class="title fx">Things I've <mark>built.</mark></h2>
+      <ol class="works">
+        <li class="work reveal">
+          <span class="work-metric" data-count="87" data-suffix="%">87%</span>
+          <div><h3>Speech Emotion Recognition</h3><p>CNN on MFCC features, benchmarked against SVM and BiLSTM. <i>Team lead · audio</i></p></div>
+        </li>
+        <li class="work reveal">
+          <span class="work-metric" data-count="89.5" data-decimals="1" data-suffix="%">89.5%</span>
+          <div><h3>Real-time comment emotion</h3><p>Six-emotion TF–IDF + Logistic Regression model served through FastAPI. Macro F1 0.86. <i>NLP · API</i></p></div>
+        </li>
+        <li class="work reveal">
+          <span class="work-metric" data-count="1.3" data-decimals="1">1.3</span>
+          <div><h3>Stock forecast + AI explainer</h3><p>XGBoost and LSTM in Streamlit with a chatbot that explains each call. Sharpe 1.3, 58% hit rate. <i>Team lead · forecasting</i></p></div>
+        </li>
+        <li class="work reveal">
+          <span class="work-metric small">now</span>
+          <div><h3>Flux AI</h3><p>A personal financial coach built on multi-step LLM orchestration. <i>In development · LLM</i></p></div>
+        </li>
+        <li class="work reveal">
+          <span class="work-metric small">cv</span>
+          <div><h3>Secure Face Login</h3><p>Anti-spoofing checks liveness before face recognition matches identity. <i>Computer vision · security</i></p></div>
+        </li>
+      </ol>
     </section>
 
     <!-- 05 Research -->
-    <section class="page" id="research">
-      <header class="page-head reveal">
-        <p class="eyebrow">05 — Research</p>
-        <h2 class="fx"><span class="outline">Published</span> <mark>papers.</mark></h2>
-        <span class="sticker sticker-alt" aria-hidden="true">ACM · Springer</span>
-      </header>
-      <div class="bento research-bento">
-        <a class="tile paper reveal" href="https://doi.org/10.1145/3805862.3805923">
-          <span class="year" aria-hidden="true">2026</span>
-          <span class="venue">ICIIT 2026 · ACM</span>
-          <h3>Insect Detection for Agricultural Pest Removal Using YOLO</h3>
-          <p>Real-time detection of insect populations for more precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo · Da Nang.</p>
-          <span class="read">Read paper <span aria-hidden="true">↗</span></span>
+    <section class="page" id="research" data-scene="research">
+      <p class="index"><b>05</b> Research</p>
+      <h2 class="title fx">Published <mark>papers.</mark></h2>
+      <div class="papers">
+        <a class="paper reveal" href="https://doi.org/10.1145/3805862.3805923">
+          <span class="year">2026</span>
+          <span class="venue">ICIIT 2026 · ACM · pp. 397–402</span>
+          <h3>Insect Detection for Agricultural Pest Removal Using YOLO <span aria-hidden="true">↗</span></h3>
+          <p>Real-time detection of insect populations for precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo · Da Nang.</p>
         </a>
-        <a class="tile paper reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33">
-          <span class="year" aria-hidden="true">2025</span>
-          <span class="venue">AJCAI 2025 · Springer LNAI</span>
-          <h3>Four Seasons in One Day: Weather Forecasting &amp; Shelter Suggestion</h3>
+        <a class="paper reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33">
+          <span class="year">2025</span>
+          <span class="venue">AJCAI 2025 · Springer LNAI 16370</span>
+          <h3>Four Seasons in One Day: Weather Forecasting &amp; Shelter Suggestion <span aria-hidden="true">↗</span></h3>
           <p>Multimodal forecasting from weather data, satellite imagery and social signals for Sydney, Melbourne and Canberra. First author · Canberra.</p>
-          <span class="read">Read paper <span aria-hidden="true">↗</span></span>
         </a>
       </div>
-      <p class="more reveal"><a href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">All publications on Google Scholar ↗</a></p>
+      <p class="reveal"><a class="link" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">All publications on Google Scholar ↗</a></p>
     </section>
 
     <!-- 06 Contact -->
-    <section class="page" id="contact">
+    <section class="page contact" id="contact" data-scene="contact">
+      <p class="index"><b>06</b> Contact</p>
+      <h2 class="title fx">Let's build something <em>real.</em></h2>
       <div class="contact-grid">
-        <div class="cta reveal">
-          <p class="eyebrow">06 — Contact</p>
-          <h2 class="fx">Let's <span class="outline-dark">build</span> something <em>real.</em></h2>
-          <a class="cta-mail" href="mailto:hoaimyn05@gmail.com">hoaimyn05@gmail.com <span aria-hidden="true">↗</span></a>
-          <div class="cta-links">
-            <a href="tel:+84982289048">0982 289 048</a>
-            <a href="https://www.linkedin.com/in/hoimy935/">LinkedIn</a>
-            <a href="https://www.facebook.com/hoimy.935/">Facebook</a>
-            <a href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Scholar</a>
-            <a href="https://github.com/hoaimyn05">GitHub</a>
-          </div>
+        <div class="contact-info reveal">
+          <a class="mail" href="mailto:hoaimyn05@gmail.com">hoaimyn05@gmail.com</a>
+          <ul class="socials">
+            <li><a class="link" href="tel:+84982289048">0982 289 048</a></li>
+            <li><a class="link" href="https://www.linkedin.com/in/hoimy935/">LinkedIn</a></li>
+            <li><a class="link" href="https://www.facebook.com/hoimy.935/">Facebook</a></li>
+            <li><a class="link" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Google Scholar</a></li>
+            <li><a class="link" href="https://github.com/hoaimyn05">GitHub</a></li>
+          </ul>
         </div>
-
-        <form class="tile mail-form reveal" action="https://formsubmit.co/hoaimyn05@gmail.com" method="POST">
-          <h3>Send me a message</h3>
-          <p class="form-sub">It lands straight in my inbox.</p>
+        <form class="mail-form reveal" action="https://formsubmit.co/hoaimyn05@gmail.com" method="POST">
+          <p class="form-title">Or drop a message here —</p>
           <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
-          <label class="field"><span>Your name</span><input name="name" type="text" required autocomplete="name" placeholder="Jane Doe" /></label>
-          <label class="field"><span>Your email</span><input name="email" type="email" required autocomplete="email" placeholder="jane@company.com" /></label>
-          <label class="field"><span>Subject</span><input name="_subject" type="text" placeholder="Internship opportunity" /></label>
-          <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Hi Hoai My, …"></textarea></label>
-          <button class="btn btn-grad send" type="submit"><span class="send-label">Send message</span> <span aria-hidden="true">→</span></button>
+          <label class="field"><span>Name</span><input name="name" type="text" required autocomplete="name" /></label>
+          <label class="field"><span>Email</span><input name="email" type="email" required autocomplete="email" /></label>
+          <label class="field"><span>Subject</span><input name="_subject" type="text" /></label>
+          <label class="field"><span>Message</span><textarea name="message" rows="3" required></textarea></label>
+          <button class="btn btn-solid send" type="submit"><span class="send-label">Send message</span> →</button>
           <p class="form-status" role="status"></p>
         </form>
       </div>
+      <footer>
+        <span>© <span id="year"></span> Nguyen Hoai My</span>
+        <img class="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=hoaimyn05.github.io&amp;left_text=visitors&amp;left_color=%23160b04&amp;right_color=%23160b04" alt="Visitor count" loading="lazy" onerror="this.remove()" />
+      </footer>
     </section>
   </main>
-
-  <footer>
-    <span>© <span id="year"></span> Nguyen Hoai My</span>
-    <img class="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=hoaimyn05.github.io&amp;left_text=visitors&amp;left_color=%231a1a1c&amp;right_color=%23ff7a1a" alt="Visitor count" loading="lazy" onerror="this.remove()" />
-  </footer>
 </body>
 </html>
