@@ -48,8 +48,9 @@
     <!-- 01 Home -->
     <section class="page home" id="home">
       <h1 class="giant" aria-label="Hoai My">
-        <span class="giant-line">Hoai</span><span class="giant-line grad">My<span class="giant-dot">.</span></span>
+        <span class="giant-line" data-split>Hoai</span><span class="giant-line grad"><span data-split>My</span><span class="giant-dot">.</span><svg class="scribble" viewBox="0 0 300 40" aria-hidden="true"><path d="M6 28C60 10 120 8 170 18S260 34 294 12"/></svg></span>
       </h1>
+      <span class="sticker sticker-hero" aria-hidden="true">AI engineer ✦ researcher</span>
       <div class="bento hero-bento">
         <article class="tile intro reveal">
           <p class="status"><span class="dot"></span>Open to AI internships</p>
@@ -79,7 +80,8 @@
     <section class="page" id="about">
       <header class="page-head reveal">
         <p class="eyebrow">02 — About me</p>
-        <h2>Curious about AI, <em class="grad-text">obsessed with shipping.</em></h2>
+        <h2 class="fx"><span class="outline">Curious</span> about AI, <em class="grad-text">obsessed with</em> <mark>shipping.</mark></h2>
+        <span class="sticker" aria-hidden="true">hi, it's me 👋</span>
       </header>
       <div class="bento about-bento">
         <article class="tile about-story reveal">
@@ -98,36 +100,37 @@
     <section class="page" id="skills">
       <header class="page-head reveal">
         <p class="eyebrow">03 — Skills</p>
-        <h2>Press a key, <em class="grad-text">meet a skill.</em></h2>
+        <h2 class="fx">Press a <span class="outline">key,</span> <em class="grad-text">meet a</em> <mark>skill.</mark></h2>
+        <span class="sticker sticker-alt" aria-hidden="true">try hovering ↓</span>
       </header>
       <div class="skills-layout">
         <div class="keyboard-wrap reveal">
           <div class="keyboard-stage">
           <div class="keyboard" role="group" aria-label="Skills keyboard. Hover or focus a key to read about the skill.">
             <div class="krow">
-              <button class="key" style="--i:0; --glow:#ffd43b" data-skill="python"><img src="assets/logos/python.svg" alt="" width="40" height="40" /><span>Python</span></button>
-              <button class="key" style="--i:1; --glow:#4dabcf" data-skill="numpy"><img src="assets/logos/numpy.svg" alt="" width="40" height="40" /><span>NumPy</span></button>
-              <button class="key" style="--i:2; --glow:#e70488" data-skill="pandas"><img src="assets/logos/pandas.svg" alt="" width="40" height="40" /><span>pandas</span></button>
-              <button class="key" style="--i:3; --glow:#336791" data-skill="sql"><img src="assets/logos/sql.svg" alt="" width="40" height="40" /><span>SQL</span></button>
-              <button class="key" style="--i:4; --glow:#11557c" data-skill="matplotlib"><img src="assets/logos/matplotlib.svg" alt="" width="40" height="40" /><span>Matplotlib</span></button>
+              <button class="key" style="--i:0; --c:#ffd43b" data-skill="python"><img src="assets/logos/python.svg" alt="" width="40" height="40" /><span>Python</span></button>
+              <button class="key" style="--i:1; --c:#4dabcf" data-skill="numpy"><img src="assets/logos/numpy.svg" alt="" width="40" height="40" /><span>NumPy</span></button>
+              <button class="key" style="--i:2; --c:#e70488" data-skill="pandas"><img src="assets/logos/pandas.svg" alt="" width="40" height="40" /><span>pandas</span></button>
+              <button class="key" style="--i:3; --c:#336791" data-skill="sql"><img src="assets/logos/sql.svg" alt="" width="40" height="40" /><span>SQL</span></button>
+              <button class="key" style="--i:4; --c:#11557c" data-skill="matplotlib"><img src="assets/logos/matplotlib.svg" alt="" width="40" height="40" /><span>Matplotlib</span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:5; --glow:#4c86b8" data-skill="seaborn"><img src="assets/logos/seaborn.svg" alt="" width="40" height="40" /><span>Seaborn</span></button>
-              <button class="key" style="--i:6; --glow:#ee4c2c" data-skill="pytorch"><img src="assets/logos/pytorch.svg" alt="" width="40" height="40" /><span>PyTorch</span></button>
-              <button class="key" style="--i:7; --glow:#ff8f00" data-skill="tensorflow"><img src="assets/logos/tensorflow.svg" alt="" width="40" height="40" /><span>TensorFlow</span></button>
-              <button class="key" style="--i:8; --glow:#d00000" data-skill="keras"><img src="assets/logos/keras.svg" alt="" width="40" height="40" /><span>Keras</span></button>
-              <button class="key" style="--i:9; --glow:#f7931e" data-skill="sklearn"><img src="assets/logos/sklearn.svg" alt="" width="40" height="40" /><span>scikit-learn</span></button>
+              <button class="key" style="--i:5; --c:#4c86b8" data-skill="seaborn"><img src="assets/logos/seaborn.svg" alt="" width="40" height="40" /><span>Seaborn</span></button>
+              <button class="key" style="--i:6; --c:#ee4c2c" data-skill="pytorch"><img src="assets/logos/pytorch.svg" alt="" width="40" height="40" /><span>PyTorch</span></button>
+              <button class="key" style="--i:7; --c:#ff8f00" data-skill="tensorflow"><img src="assets/logos/tensorflow.svg" alt="" width="40" height="40" /><span>TensorFlow</span></button>
+              <button class="key" style="--i:8; --c:#d00000" data-skill="keras"><img src="assets/logos/keras.svg" alt="" width="40" height="40" /><span>Keras</span></button>
+              <button class="key" style="--i:9; --c:#f7931e" data-skill="sklearn"><img src="assets/logos/sklearn.svg" alt="" width="40" height="40" /><span>scikit-learn</span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:10; --glow:#189fdd" data-skill="xgboost"><img src="assets/logos/xgboost.svg" alt="" width="40" height="40" /><span>XGBoost</span></button>
-              <button class="key" style="--i:11; --glow:#5c3ee8" data-skill="opencv"><img src="assets/logos/opencv.svg" alt="" width="40" height="40" /><span>OpenCV</span></button>
-              <button class="key" style="--i:12; --glow:#0b23a9" data-skill="yolo"><img src="assets/logos/yolo.svg" alt="" width="40" height="40" /><span>YOLO</span></button>
-              <button class="key" style="--i:13; --glow:#2496ed" data-skill="docker"><img src="assets/logos/docker.svg" alt="" width="40" height="40" /><span>Docker</span></button>
-              <button class="key" style="--i:14; --glow:#05998b" data-skill="fastapi"><img src="assets/logos/fastapi.svg" alt="" width="40" height="40" /><span>FastAPI</span></button>
+              <button class="key" style="--i:10; --c:#189fdd" data-skill="xgboost"><img src="assets/logos/xgboost.svg" alt="" width="40" height="40" /><span>XGBoost</span></button>
+              <button class="key" style="--i:11; --c:#5c3ee8" data-skill="opencv"><img src="assets/logos/opencv.svg" alt="" width="40" height="40" /><span>OpenCV</span></button>
+              <button class="key" style="--i:12; --c:#0b23a9" data-skill="yolo"><img src="assets/logos/yolo.svg" alt="" width="40" height="40" /><span>YOLO</span></button>
+              <button class="key" style="--i:13; --c:#2496ed" data-skill="docker"><img src="assets/logos/docker.svg" alt="" width="40" height="40" /><span>Docker</span></button>
+              <button class="key" style="--i:14; --c:#05998b" data-skill="fastapi"><img src="assets/logos/fastapi.svg" alt="" width="40" height="40" /><span>FastAPI</span></button>
             </div>
             <div class="krow">
-              <button class="key" style="--i:15; --glow:#ff4b4b" data-skill="streamlit"><img src="assets/logos/streamlit.svg" alt="" width="40" height="40" /><span>Streamlit</span></button>
-              <button class="key key-space" style="--i:16; --glow:#ff7a1f" data-skill="libs"><span class="space-logos" aria-hidden="true"><img src="assets/logos/python.svg" alt="" /><img src="assets/logos/numpy.svg" alt="" /><img src="assets/logos/pandas.svg" alt="" /></span><span>Python libraries</span></button>
+              <button class="key" style="--i:15; --c:#ff4b4b" data-skill="streamlit"><img src="assets/logos/streamlit.svg" alt="" width="40" height="40" /><span>Streamlit</span></button>
+              <button class="key key-space" style="--i:16; --c:#ff7a1f" data-skill="libs"><span class="space-logos" aria-hidden="true"><img src="assets/logos/python.svg" alt="" /><img src="assets/logos/numpy.svg" alt="" /><img src="assets/logos/pandas.svg" alt="" /></span><span>Python libraries</span></button>
             </div>
           </div>
           </div>
@@ -149,7 +152,8 @@
     <section class="page" id="projects">
       <header class="page-head reveal">
         <p class="eyebrow">04 — Projects</p>
-        <h2>Things I've <em class="grad-text">built.</em></h2>
+        <h2 class="fx"><span class="outline">Things</span> I've <em class="grad-text">built.</em></h2>
+        <span class="sticker" aria-hidden="true">5 projects ✦</span>
       </header>
       <div class="bento work-bento">
         <article class="tile project featured reveal">
@@ -190,7 +194,8 @@
     <section class="page" id="research">
       <header class="page-head reveal">
         <p class="eyebrow">05 — Research</p>
-        <h2>Published <em class="grad-text">papers.</em></h2>
+        <h2 class="fx"><span class="outline">Published</span> <mark>papers.</mark></h2>
+        <span class="sticker sticker-alt" aria-hidden="true">ACM · Springer</span>
       </header>
       <div class="bento research-bento">
         <a class="tile paper reveal" href="https://doi.org/10.1145/3805862.3805923">
@@ -216,7 +221,7 @@
       <div class="contact-grid">
         <div class="cta reveal">
           <p class="eyebrow">06 — Contact</p>
-          <h2>Let's build something <em>real.</em></h2>
+          <h2 class="fx">Let's <span class="outline-dark">build</span> something <em>real.</em></h2>
           <a class="cta-mail" href="mailto:hoaimyn05@gmail.com">hoaimyn05@gmail.com <span aria-hidden="true">↗</span></a>
           <div class="cta-links">
             <a href="tel:+84982289048">0982 289 048</a>
