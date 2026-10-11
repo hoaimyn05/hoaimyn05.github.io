@@ -3,191 +3,219 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Nguyen Hoai My — FPT University AI undergraduate building practical computer vision, LLM, and backend AI systems. Published at AJCAI 2025 and ICIIT 2026." />
+  <meta name="description" content="Nguyen Hoai My — AI Engineer & Researcher in Ho Chi Minh City. Computer vision, speech and LLM systems. Published at AJCAI 2025 and ICIIT 2026." />
   <meta name="theme-color" content="#0b0a0f" />
   <meta property="og:title" content="Nguyen Hoai My · AI Engineer & Researcher" />
-  <meta property="og:description" content="Computer Vision · LLM Applications · Backend AI Systems" />
+  <meta property="og:description" content="Research, shipped. Computer vision · Speech · LLM systems." />
   <meta property="og:image" content="assets/social-preview.jpg" />
   <title>Nguyen Hoai My · AI Engineer &amp; Researcher</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="assets/hoai-my.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="fire-cursor.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="fire" aria-hidden="true"></canvas>
   <div class="progress" aria-hidden="true"><span></span></div>
-  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em></em></span></div>
-  <div class="grain" aria-hidden="true"></div>
 
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Nguyen Hoai My, home">
-      <span class="brand-mark" aria-hidden="true">HM</span>
-      <span class="brand-name">Hoai My</span>
+      <span class="brand-mark" aria-hidden="true"><i></i></span>
+      <span class="mono">NGUYEN HOAI MY</span>
     </a>
-    <nav class="nav" aria-label="Primary navigation">
-      <span class="nav-light" aria-hidden="true"></span>
-      <a class="roll" href="#about"><span data-text="About">About</span></a>
-      <a class="roll" href="#research"><span data-text="Research">Research</span></a>
-      <a class="roll" href="#projects"><span data-text="Projects">Projects</span></a>
-      <a class="roll" href="#contact"><span data-text="Contact">Contact</span></a>
+    <nav class="nav mono" aria-label="Primary navigation">
+      <a href="#research"><b>01</b> Research</a>
+      <a href="#work"><b>02</b> Work</a>
+      <a href="#toolkit"><b>03</b> Toolkit</a>
+      <a href="#contact"><b>04</b> Contact</a>
     </nav>
-    <a class="nav-cta magnetic" href="mailto:hoaimyn05@gmail.com"><span>Hire me ↗</span></a>
+    <a class="btn btn-metal magnetic" href="#contact"><span>Hire me</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
   </header>
 
   <main id="main">
-    <section class="hero" id="top" data-theme="dusk">
-      <h1 class="hero-name" aria-label="Nguyen Hoai My">
-        <span data-speed="0.25">HOAI</span> <span data-speed="0.15">MY</span>
-      </h1>
+    <section class="hero hud" id="top">
+      <span class="tick tick-tr" aria-hidden="true"></span><span class="tick tick-bl" aria-hidden="true"></span>
+      <div class="hud-top mono" aria-hidden="true"><span>NGUYEN HOAI MY</span><span>AI / VISION · SPEECH · LLM</span><span class="sun"><i></i><i></i><i></i><b></b></span></div>
 
-      <figure class="portrait" data-cursor="hello">
-        <div class="portrait-inner">
-          <img src="assets/hoai-my.jpg" width="960" height="1280" alt="Nguyen Hoai My standing in front of a sunset" />
-          <span class="portrait-light" aria-hidden="true"></span>
+      <div class="hero-copy">
+        <p class="kicker mono reveal">AI ENGINEER &amp; RESEARCHER / HCMC, VIETNAM</p>
+        <h1 class="chrome reveal" aria-label="Hoai My"><span>hoai</span><span>my.</span></h1>
+        <div class="rule" aria-hidden="true"><i class="dots"></i><i class="line"></i><i class="nodes"></i></div>
+        <p class="tagline reveal">Research, <em>shipped.</em></p>
+        <p class="lede reveal">Computer vision, speech &amp; LLM systems. Two papers published. Built to be deployed.</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-fire magnetic" href="#work"><span>View work</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+          <a class="btn btn-metal magnetic" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi"><span>Scholar</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
         </div>
-      </figure>
-
-      <p class="hero-outline" aria-hidden="true"><span data-speed="0.25">HOAI</span> <span data-speed="0.15">MY</span></p>
-
-      <div class="hero-side hero-left reveal">
-        <p class="kicker"><span class="live-dot"></span> Open to AI internships</p>
-        <p class="hero-role">AI Engineer<br /><i>&amp; Researcher</i></p>
       </div>
 
-      <div class="hero-side hero-right reveal">
-        <p>FPT University AI undergraduate turning research experiments into <i>reliable</i> AI products.</p>
-        <p class="hero-meta">Ho Chi Minh City · Vietnam</p>
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="wires" viewBox="0 0 520 520" preserveAspectRatio="none">
+          <path d="M52 108C110 108 110 150 190 150"/><path d="M52 204C110 204 120 214 180 214"/><path d="M52 301C110 301 110 280 190 280"/>
+        </svg>
+        <div class="chips">
+          <span class="chip-ico" title="Vision"><svg viewBox="0 0 24 24"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span class="chip-ico" title="Speech"><svg viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg></span>
+          <span class="chip-ico" title="Language"><b>T</b></span>
+        </div>
+        <figure class="portrait">
+          <img src="assets/hoai-my.jpg" width="960" height="1280" alt="" />
+          <span class="portrait-light"></span>
+        </figure>
+        <svg class="orbit" viewBox="0 0 440 140">
+          <ellipse cx="220" cy="70" rx="214" ry="64"/>
+          <circle r="5" class="o1"><animateMotion dur="7s" repeatCount="indefinite" path="M6 70a214 64 0 1 0 428 0a214 64 0 1 0 -428 0"/></circle>
+          <circle r="3.5" class="o2"><animateMotion dur="7s" begin="-3.5s" repeatCount="indefinite" path="M6 70a214 64 0 1 0 428 0a214 64 0 1 0 -428 0"/></circle>
+        </svg>
+        <p class="hud-label mono">03 / DEPLOY</p>
+        <div class="terminal mono"><span class="spinner"></span><span class="typed" data-phrases="see. listen. reason.|train. evaluate. ship.|research, shipped."></span><span class="caret"></span></div>
+        <p class="hud-steps mono">BUILD / EVALUATE / DEPLOY</p>
       </div>
-
-      <a class="scroll-hint" href="#about"><span>Scroll</span><i aria-hidden="true"></i></a>
+      <span class="hud-bars" aria-hidden="true"><i></i><i></i><i></i></span>
     </section>
 
-    <section class="marquee" aria-label="Focus areas">
+    <section class="marquee mono" aria-label="Focus areas">
       <div class="marquee-track">
-        <span>Computer Vision</span><b>✺</b><span>Large Language Models</span><b>✺</b><span>Speech AI</span><b>✺</b><span>Explainable AI</span><b>✺</b><span>Deployment</span><b>✺</b>
-        <span aria-hidden="true">Computer Vision</span><b>✺</b><span aria-hidden="true">Large Language Models</span><b>✺</b><span aria-hidden="true">Speech AI</span><b>✺</b><span aria-hidden="true">Explainable AI</span><b>✺</b><span aria-hidden="true">Deployment</span><b>✺</b>
+        <span>COMPUTER VISION</span><b>✦</b><span>LARGE LANGUAGE MODELS</span><b>✦</b><span>SPEECH AI</span><b>✦</b><span>EXPLAINABLE AI</span><b>✦</b><span>FASTAPI · DOCKER · AWS</span><b>✦</b>
+        <span aria-hidden="true">COMPUTER VISION</span><b>✦</b><span aria-hidden="true">LARGE LANGUAGE MODELS</span><b>✦</b><span aria-hidden="true">SPEECH AI</span><b>✦</b><span aria-hidden="true">EXPLAINABLE AI</span><b>✦</b><span aria-hidden="true">FASTAPI · DOCKER · AWS</span><b>✦</b>
       </div>
     </section>
 
-    <section class="statement" id="about" data-theme="sunset">
-      <p class="section-index">01 — About</p>
-      <p class="statement-text" data-words>I'm Nguyen Hoai My, an AI student at FPT University. I build systems that see, listen and reason — then ship them as products people can actually use.</p>
-      <div class="stats">
-        <article class="stat"><b data-count="2">0</b><span>Peer-reviewed papers</span></article>
-        <article class="stat"><b data-count="89.5" data-decimals="1" data-suffix="%">0</b><span>Text emotion accuracy</span></article>
-        <article class="stat"><b data-count="87" data-suffix="%">0</b><span>Speech emotion accuracy</span></article>
-        <article class="stat"><b data-count="1.3" data-decimals="1">0</b><span>Sharpe ratio · stock model</span></article>
-      </div>
-    </section>
+    <section class="section" id="research">
+      <header class="section-head">
+        <p class="mono idx">01 / RESEARCH</p>
+        <h2 class="chrome-flat">Published work.</h2>
+        <span class="mono count">[02]</span>
+      </header>
 
-    <section class="section" id="research" data-theme="dusk">
-      <div class="section-head">
-        <p class="section-index">02 — Research</p>
-        <h2 class="reveal">Published <i>work</i></h2>
-        <a class="text-link" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi">Google Scholar ↗</a>
-      </div>
-      <div class="research-grid">
-        <a class="paper tilt reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33" data-cursor="read">
-          <span class="spot" aria-hidden="true"></span>
-          <div class="paper-top"><span class="pill pill-on">2025</span><span class="pill">AJCAI · CORE B</span><span class="pill">Springer LNAI 16370</span></div>
-          <h3>Four Seasons in One Day: Multimodal Weather Forecasting &amp; Shelter Suggestion for Sydney, Melbourne and Canberra</h3>
-          <p>Multimodal forecasting that combines meteorological data, satellite imagery and social signals with real-time shelter recommendations. First &amp; corresponding author · presented in Canberra, Australia.</p>
-          <div class="paper-foot"><span>DOI 10.1007/978-981-95-4969-6_33</span><span class="arrow">↗</span></div>
-        </a>
-        <a class="paper tilt reveal" href="https://dl.acm.org/doi/abs/10.1145/3805862.3805923" data-cursor="read">
-          <span class="spot" aria-hidden="true"></span>
-          <div class="paper-top"><span class="pill pill-on">2026</span><span class="pill">ICIIT · ACM</span><span class="pill">pp. 397–402</span></div>
+      <a class="card hud tilt reveal" href="https://doi.org/10.1145/3805862.3805923" data-cursor="read">
+        <span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="spot"></span>
+        <img class="card-ill" src="assets/ill-insect.svg" alt="" loading="lazy" />
+        <div class="card-body">
+          <p class="mono cat">COMPUTER VISION / ICIIT 2026 · ACM</p>
           <h3>Insect Detection for Agricultural Pest Removal Using YOLO</h3>
-          <p>A real-time YOLO system that identifies, categorises and assesses insect populations for precise, less chemical-heavy pest control. With Khoa Quoc Anh Ngo · presented in Da Nang, Vietnam.</p>
-          <div class="paper-foot"><span>DOI 10.1145/3805862.3805923</span><span class="arrow">↗</span></div>
-        </a>
+          <p class="card-tag">Spot the pest before it spreads.<br /><span>Real-time YOLO detection that identifies, categorises and assesses insect populations.</span></p>
+          <div class="metric"><b>20–40%</b><div><strong>crop loss targeted</strong><span>Yearly global yield lost to pests.<br />With Khoa Quoc Anh Ngo · Da Nang, Mar 2026.</span></div></div>
+          <p class="mono tech">YOLO · OBJECT DETECTION · PP. 397–402 · DOI 10.1145/3805862.3805923</p>
+        </div>
+        <span class="corner-arrow"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+
+      <a class="card hud tilt reveal" href="https://doi.org/10.1007/978-981-95-4969-6_33" data-cursor="read">
+        <span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="spot"></span>
+        <img class="card-ill" src="assets/ill-weather.svg" alt="" loading="lazy" />
+        <div class="card-body">
+          <p class="mono cat">MULTIMODAL / AJCAI 2025 · SPRINGER LNAI 16370</p>
+          <h3>Four Seasons in One Day: Weather Forecasting &amp; Shelter Suggestion</h3>
+          <p class="card-tag">Forecast the chaos. Find shelter fast.<br /><span>Meteorological data, satellite imagery and social signals fused with real-time shelter recommendations.</span></p>
+          <div class="metric"><b>3</b><div><strong>cities covered</strong><span>Sydney · Melbourne · Canberra.<br />First &amp; corresponding author · CORE B.</span></div></div>
+          <p class="mono tech">TRANSFORMER · EXPLAINABLE AI · DOI 10.1007/978-981-95-4969-6_33</p>
+        </div>
+        <span class="corner-arrow"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+    </section>
+
+    <section class="section" id="work">
+      <header class="section-head">
+        <p class="mono idx">02 / SELECTED SYSTEMS</p>
+        <h2 class="chrome-flat">Proof of work.</h2>
+        <span class="mono count">[05]</span>
+      </header>
+
+      <article class="card hud tilt reveal">
+        <span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="spot"></span>
+        <img class="card-ill" src="assets/ill-speech.svg" alt="" loading="lazy" />
+        <div class="card-body">
+          <p class="mono cat">AUDIO / SPEECH EMOTION</p>
+          <h3>Speech Emotion Recognition</h3>
+          <p class="card-tag">Hear the feeling. Prove it in numbers.<br /><span>CNN on MFCC features, benchmarked against SVM and BiLSTM baselines.</span></p>
+          <div class="metric"><b>87%</b><div><strong>test accuracy</strong><span>Team lead · team of 4.<br />Sep – Nov 2025.</span></div></div>
+          <p class="mono tech">TENSORFLOW · MFCC · CNN</p>
+        </div>
+      </article>
+
+      <article class="card hud tilt reveal">
+        <span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="spot"></span>
+        <img class="card-ill" src="assets/ill-comments.svg" alt="" loading="lazy" />
+        <div class="card-body">
+          <p class="mono cat">NLP / REAL-TIME API</p>
+          <h3>Real-Time Comment Emotion</h3>
+          <p class="card-tag">Read the room, in real time.<br /><span>6-class TF–IDF + Logistic Regression model served through FastAPI.</span></p>
+          <div class="metric"><b>89.5%</b><div><strong>accuracy</strong><span>Macro F1 = 0.86.<br />Team of 4 · Sep – Nov 2025.</span></div></div>
+          <p class="mono tech">SCIKIT-LEARN · TF–IDF · FASTAPI</p>
+        </div>
+      </article>
+
+      <article class="card hud tilt reveal">
+        <span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="spot"></span>
+        <img class="card-ill" src="assets/ill-stock.svg" alt="" loading="lazy" />
+        <div class="card-body">
+          <p class="mono cat">FORECASTING / LLM CHATBOT</p>
+          <h3>Stock Forecast + AI Chatbot</h3>
+          <p class="card-tag">Forecast the market. Explain the call.<br /><span>XGBoost + LSTM forecasts in a Streamlit dashboard with an OpenAI-powered chatbot.</span></p>
+          <div class="metric"><b>1.3</b><div><strong>Sharpe ratio</strong><span>58% directional hit rate.<br />Team lead · team of 3.</span></div></div>
+          <p class="mono tech">XGBOOST · LSTM · STREAMLIT · OPENAI API</p>
+        </div>
+      </article>
+
+      <div class="mini-grid">
+        <article class="mini hud tilt reveal">
+          <span class="tick tick-tr"></span><span class="spot"></span>
+          <p class="mono cat"><span class="live"></span> IN DEVELOPMENT</p>
+          <h3>Flux AI</h3>
+          <p>AI personal financial coach powered by multi-step LLM orchestration.</p>
+          <p class="mono tech">LLM ORCHESTRATION · FINTECH</p>
+        </article>
+        <article class="mini hud tilt reveal">
+          <span class="tick tick-tr"></span><span class="spot"></span>
+          <p class="mono cat">BUILT</p>
+          <h3>Secure Face Login</h3>
+          <p>Face Anti-Spoofing + Face Recognition: liveness first, identity second.</p>
+          <p class="mono tech">COMPUTER VISION · SECURITY</p>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="projects" data-theme="ink">
-      <div class="section-head">
-        <p class="section-index">03 — Projects</p>
-        <h2 class="reveal">Selected <i>builds</i></h2>
-      </div>
-      <ol class="project-list">
-        <li class="project reveal" data-metric="LLM" data-caption="Multi-step orchestration" data-hue="18">
-          <span class="project-no">01</span>
-          <div class="project-main">
-            <h3>Flux AI</h3>
-            <p>An AI personal financial coach powered by multi-step LLM orchestration, turning financial context into explainable guidance.</p>
-          </div>
-          <span class="project-tags">LLM · FinTech<br /><em>In development</em></span>
-        </li>
-        <li class="project reveal" data-metric="Live" data-caption="Liveness before identity" data-hue="200">
-          <span class="project-no">02</span>
-          <div class="project-main">
-            <h3>Secure Face Login</h3>
-            <p>Face Anti-Spoofing combined with Face Recognition to verify liveness before identity matching.</p>
-          </div>
-          <span class="project-tags">Computer Vision<br />Security</span>
-        </li>
-        <li class="project reveal" data-metric="1.3" data-caption="Sharpe ratio · 58% hit rate" data-hue="35">
-          <span class="project-no">03</span>
-          <div class="project-main">
-            <h3>Stock Prediction + AI Chatbot</h3>
-            <p>Led a team of 3: XGBoost and LSTM forecasting, an interactive Streamlit dashboard, and an OpenAI-powered chatbot that explains predictions.</p>
-          </div>
-          <span class="project-tags">XGBoost · LSTM<br />Streamlit</span>
-        </li>
-        <li class="project reveal" data-metric="87%" data-caption="Accuracy vs SVM / BiLSTM" data-hue="270">
-          <span class="project-no">04</span>
-          <div class="project-main">
-            <h3>Speech Emotion Recognition</h3>
-            <p>Led a team of 4 to build a CNN on MFCC features, benchmarked against SVM and BiLSTM baselines.</p>
-          </div>
-          <span class="project-tags">CNN · MFCC<br />Audio</span>
-        </li>
-        <li class="project reveal" data-metric="89.5%" data-caption="Accuracy · macro F1 0.86" data-hue="330">
-          <span class="project-no">05</span>
-          <div class="project-main">
-            <h3>Real-Time Comment Emotion</h3>
-            <p>A web app classifying 6 emotions with TF–IDF + Logistic Regression, served in real time through FastAPI.</p>
-          </div>
-          <span class="project-tags">NLP<br />FastAPI</span>
-        </li>
-      </ol>
-      <div class="preview" aria-hidden="true"><b></b><span></span></div>
-    </section>
-
-    <section class="section" id="skills" data-theme="dusk">
-      <div class="section-head">
-        <p class="section-index">04 — Toolkit</p>
-        <h2 class="reveal">What I <i>use</i></h2>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-group tilt reveal"><span class="spot" aria-hidden="true"></span><h3>Languages</h3><ul><li>Python</li><li>SQL</li></ul></div>
-        <div class="skill-group tilt reveal"><span class="spot" aria-hidden="true"></span><h3>ML &amp; Deep Learning</h3><ul><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>YOLO</li></ul></div>
-        <div class="skill-group tilt reveal"><span class="spot" aria-hidden="true"></span><h3>Ship &amp; Serve</h3><ul><li>FastAPI</li><li>Streamlit</li><li>Docker</li><li>PostgreSQL</li><li>AWS EC2</li><li>Git</li></ul></div>
-        <div class="skill-group tilt reveal"><span class="spot" aria-hidden="true"></span><h3>Spoken</h3><ul><li>Vietnamese</li><li>English B2 CEFR</li></ul></div>
+    <section class="section" id="toolkit">
+      <header class="section-head">
+        <p class="mono idx">03 / TOOLKIT</p>
+        <h2 class="chrome-flat">Stack.</h2>
+        <span class="mono count">[17]</span>
+      </header>
+      <div class="stack">
+        <div class="stack-row reveal"><p class="mono">LANGUAGES</p><ul><li>Python</li><li>SQL</li></ul></div>
+        <div class="stack-row reveal"><p class="mono">ML / DL</p><ul><li>PyTorch</li><li>TensorFlow</li><li>Keras</li><li>scikit-learn</li><li>XGBoost</li><li>OpenCV</li><li>YOLO</li></ul></div>
+        <div class="stack-row reveal"><p class="mono">SHIP</p><ul><li>FastAPI</li><li>Streamlit</li><li>Docker</li><li>PostgreSQL</li><li>AWS EC2</li><li>Git</li></ul></div>
+        <div class="stack-row reveal"><p class="mono">SPOKEN</p><ul><li>Vietnamese</li><li>English B2 CEFR</li></ul></div>
       </div>
     </section>
 
-    <section class="contact" id="contact" data-theme="sunset">
-      <p class="section-index">05 — Contact</p>
-      <h2 class="contact-title">Let's build<br /><i>something real.</i></h2>
-      <a class="contact-mail" href="mailto:hoaimyn05@gmail.com" data-cursor="write">hoaimyn05@gmail.com</a>
-      <div class="contact-links">
-        <a class="chip magnetic" href="https://www.linkedin.com/in/hoimy935/"><span>LinkedIn ↗</span></a>
-        <a class="chip magnetic" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi"><span>Google Scholar ↗</span></a>
-        <a class="chip magnetic" href="https://github.com/hoaimyn05"><span>GitHub ↗</span></a>
-        <button class="chip magnetic" type="button" data-copy="hoaimyn05@gmail.com"><span>Copy email</span></button>
+    <section class="section contact" id="contact">
+      <header class="section-head">
+        <p class="mono idx">04 / CONTACT</p>
+        <h2 class="contact-title"><span class="chrome-flat">Let's build</span><br /><em>something real.</em></h2>
+      </header>
+      <div class="links">
+        <a class="link-tile hud magnetic-soft" href="mailto:hoaimyn05@gmail.com"><span class="mono">EMAIL</span><b>hoaimyn05@gmail.com</b><i>↗</i></a>
+        <a class="link-tile hud magnetic-soft" href="tel:+84982289048"><span class="mono">PHONE</span><b>0982 289 048</b><i>↗</i></a>
+        <a class="link-tile hud magnetic-soft" href="https://www.linkedin.com/in/hoimy935/"><span class="mono">LINKEDIN</span><b>in/hoimy935</b><i>↗</i></a>
+        <a class="link-tile hud magnetic-soft" href="https://www.facebook.com/hoimy.935/"><span class="mono">FACEBOOK</span><b>hoimy.935</b><i>↗</i></a>
+        <a class="link-tile hud magnetic-soft" href="https://scholar.google.com/citations?user=iMd_5b4AAAAJ&amp;hl=vi"><span class="mono">GOOGLE SCHOLAR</span><b>Publications</b><i>↗</i></a>
+        <a class="link-tile hud magnetic-soft" href="https://github.com/hoaimyn05"><span class="mono">GITHUB</span><b>@hoaimyn05</b><i>↗</i></a>
       </div>
+      <button class="btn btn-metal copy magnetic" type="button" data-copy="hoaimyn05@gmail.com"><span>Copy email</span></button>
     </section>
   </main>
 
-  <footer>
-    <span>© <span id="year"></span> Nguyen Hoai My</span>
+  <footer class="mono">
+    <span>© <span id="year"></span> NGUYEN HOAI MY</span>
     <img class="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=hoaimyn05.github.io&amp;left_text=visitors&amp;left_color=%23141218&amp;right_color=%23ff7a1a" alt="Visitor count" loading="lazy" onerror="this.remove()" />
-    <span>Research → Engineer → Deploy</span>
+    <span>RESEARCH → ENGINEER → DEPLOY</span>
   </footer>
 </body>
 </html>
