@@ -55,20 +55,60 @@ const countUp = (el) => {
   };
   requestAnimationFrame(tick);
 };
-const revealables = document.querySelectorAll('.reveal, .fx, .giant');
-if (reducedMotion || !hasIO) {
-  revealables.forEach((el) => el.classList.add('is-visible'));
-} else {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      entry.target.querySelectorAll('[data-count]').forEach(countUp);
-      if (entry.target.dataset.count) countUp(entry.target);
-      observer.unobserve(entry.target);
+// Split body copy into words that slide up out of a mask
+function splitWords(root) {
+  if (root.dataset.splitDone) return;
+  root.dataset.splitDone = '1';
+  const walk = (node) => {
+    [...node.childNodes].forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(part); return; }
+          const w = document.createElement('span');
+          w.className = 'w';
+          const inner = document.createElement('span');
+          inner.textContent = part;
+          w.append(inner);
+          frag.append(w);
+        });
+        child.replaceWith(frag);
+      } else if (child.nodeType === Node.ELEMENT_NODE && !child.matches('img, svg, input, textarea, .ch, .w') && !child.hasAttribute('data-count')) {
+        walk(child);
+      }
     });
-  }, { threshold: 0.15 });
-  revealables.forEach((el) => observer.observe(el));
+  };
+  walk(root);
+}
+const WORD_TARGETS = '.index, .lead, .actions .link, .numbers dd, .portrait figcaption, .about-lead, .facts dt, .facts dd, .hint, .work h3, .work p, .paper .venue, .paper h3, .paper p, #research > p .link, .mail, .socials a, .form-title, .field > span';
+if (!reducedMotion) document.querySelectorAll(WORD_TARGETS).forEach(splitWords);
+
+// Every page animates its text in when it arrives and back out when it leaves
+const pagesForText = [...document.querySelectorAll('.page')];
+pagesForText.forEach((page) => {
+  let n = 0;
+  page.querySelectorAll('.w, .ch').forEach((el) => {
+    el.style.setProperty('--d', `${Math.min(n++, 60) * 14}ms`);
+  });
+});
+const enterPage = (page) => {
+  if (page.classList.contains('shown')) return;
+  page.classList.add('shown');
+  page.querySelectorAll('.reveal, .fx, .giant').forEach((el) => el.classList.add('is-visible'));
+  page.querySelectorAll('[data-count]').forEach(countUp);
+};
+const leavePage = (page) => {
+  page.classList.remove('shown');
+  page.querySelectorAll('.reveal, .fx, .giant').forEach((el) => el.classList.remove('is-visible'));
+};
+if (reducedMotion || !hasIO) {
+  pagesForText.forEach(enterPage);
+} else {
+  const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => (entry.isIntersecting ? enterPage(entry.target) : leavePage(entry.target)));
+  }, { threshold: 0.2 });
+  pagesForText.forEach((page) => textObserver.observe(page));
 }
 
 // Scene changes: the page colour follows whichever section fills the middle of the screen
@@ -131,6 +171,24 @@ const SKILLS = {
 
 const note = document.querySelector('.key-note');
 const keys = [...document.querySelectorAll('.key')];
+keys.forEach((key) => {
+  ['front', 'back', 'left', 'right'].forEach((side) => {
+    const el = document.createElement('span');
+    el.className = `side s-${side}`;
+    el.setAttribute('aria-hidden', 'true');
+    key.prepend(el);
+  });
+});
+// On narrow screens the note sits under the board instead of along its edge
+const noteHome = note?.parentElement;
+const narrow = window.matchMedia('(max-width: 900px)');
+const placeNote = () => {
+  if (!note) return;
+  if (narrow.matches) document.querySelector('.skills-layout').append(note);
+  else noteHome.prepend(note);
+};
+narrow.addEventListener('change', placeNote);
+placeNote();
 let soundOn = false;
 let audio;
 
@@ -195,6 +253,7 @@ if (stage) {
     key.style.setProperty('--fx', `${Math.round(Math.cos(angle) * dist)}px`);
     key.style.setProperty('--fy', `${Math.round(Math.sin(angle) * dist * 0.7 - 120)}px`);
     key.style.setProperty('--fr', `${Math.round(Math.random() * 120 - 60)}deg`);
+    key.style.setProperty('--fz', `${Math.round(250 + Math.random() * 450)}px`);
   });
   let rippleTimer;
   const ripple = () => {
@@ -224,8 +283,8 @@ if (stage) {
         const r = stage.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        board.style.setProperty('--rx', `${22 - y * 10}deg`);
-        board.style.setProperty('--rz', `${-3 + x * 8}deg`);
+        board.style.setProperty('--rx', `${54 - y * 8}deg`);
+        board.style.setProperty('--rz', `${-38 + x * 10}deg`);
       });
       stage.addEventListener('pointerleave', () => {
         board.style.removeProperty('--rx');
